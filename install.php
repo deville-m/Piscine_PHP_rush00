@@ -12,7 +12,7 @@ if (@touch("private/order") === FLASE)
 if (@touch("private/product") === FALSE)
 	exit ("FATAL ERROR: cannot create product filen\n");
 $passwd = array();
-$passwd['root'] = array(hash("whirlpool", "toor"), "admin");
+$passwd['root'] = array("passwd" => hash("whirlpool", "toor"), "group" => "admin");
 if (($serial = @serialize($passwd)) === FALSE)
 	exit ("FATAL ERROR: cannot serialize root user");
 if (@file_put_contents("private/passwd", $serial) === FALSE)
