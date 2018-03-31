@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: #7f8c8d;
+  background-color: #27ae60;
 }
 
 .header {
@@ -32,7 +32,7 @@ body {
 
 .footer {
   padding: 1em;
-  background-color: #3498db;
+  background-color: #27ae60;
 }
 
 /* Iframe stuffs */
@@ -42,6 +42,24 @@ body {
   margin: 0;
   padding: 0;
   border: none;
+}
+/*======== Displays ========*/
+/* a. categories */
+.tiles {
+  width: 200px;
+  height: 200px;
+}
+
+/*======== Listings ========*/
+/* a. categories */
+
+/* b. products */
+.product_list {
+  list-style: none;
+}
+
+.products {
+  display: inline-block;
 }
 
 /* CELLS */
