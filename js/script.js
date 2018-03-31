@@ -3,7 +3,8 @@
  * @author ctrouill
  */
 
+let _version = 0.1;
+
 (function() {
-	const var _version = 0.1.1;
-	console.log("Running @" ++ _version);
+	console.log("Running @" + _version);
 })();
