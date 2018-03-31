@@ -1,9 +1,9 @@
 <?php
 
-define("PASSWD", "../private/passwd");
-define("PRODUCT", "../private/product");
-define("CATEGORY", "../private/category");
-define("ORDER", "../private/order");
+define("PASSWD", "/../private/passwd");
+define("PRODUCT", "/../private/product");
+define("CATEGORY", "/../private/category");
+define("ORDER", "/../private/order");
 
 
 function file_to_data($file) {
