@@ -1,5 +1,7 @@
 <?php
 
+include("general.php");
+
 /*
  * @author ctrouill
  * @docs add product to serialized file database
@@ -16,10 +18,10 @@ function add_product($product_id, $name,
     foreach(func_get_args() as $k) {
         if (!$k || $k === "") return false;
     }
-    if (!($products = @unserialize(@file_get_contents('../private/product'))))
+    if (($products = file_to_data("../private/product")) === FALSE)
         return false;
     if ($products[$product_id] != NULL) {
-        return (false);
+        return false;
     }
     $products[$product_id] = array();
     $products[$product_id]['name'] = $name;
@@ -27,7 +29,8 @@ function add_product($product_id, $name,
     $products[$product_id]['quantity'] = $quantity;
     $products[$product_id]['image'] = $image;
     $products[$product_id]['visible'] = $visible;
-    @file_put_contents('../private/product', serialize($product_id));
+    if (!data_to_file($products, "../private/product"))
+        return false;
     return true;
 }
 
@@ -38,17 +41,14 @@ function add_product($product_id, $name,
  * @return boolean of computation success
  */
 function remove_product($product_id) {
-    if (!$product_id) {
-        return (false);
-    }
-    if (!($products = @unserialize(@file_get_contents('../private/product'))))
+    if (!$product_id)
         return false;
-    foreach ($products as $p) {
-        if ($$p === $product_id) {
-            unset($products[$$p]);
-            return (true);
-        }
-    }
-    return (false);
+    if (!($products = data_to_file("../private/product")) === FALSE)
+        return false;
+    unset($products[$product_id]);
+    if (!data_to_file("../ private/product"))
+        return false;
+    return true;
 }
+
 ?>
