@@ -5,13 +5,16 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
   </head>
   <body>
-	<h1>Connection :</h1>
-	<form method="post" action="api/login.php">
-	  <p>
-		<label for="pseudo">Votre pseudo</label> : <input  type="text" name="pseudo" id="pseudo">
-		<label for="passwd">Votre mot de passe</label> : <input  type="password" name="pseudo" id="pseudo">
-		<input type="submit" value="Envoyer">
-	  </p>
-	</form>
+	<div class="login-page">
+	  <div class="form">
+		<h1>Login</h1>
+		<form class="login-form" method="post" action="api/login.php">
+		  <input type="text" playceholder="username"/>
+		  <input type="password" placeholder="password"/>
+		  <button>login</button>
+		  <p class="message">Not registered? <a href="register.html">Create an account</a></p>
+		</form>
+	  </div>
+	</div>
   </body>
 </html>

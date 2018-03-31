@@ -5,14 +5,23 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
   </head>
   <body>
-	<h1>Inscription :</h1>
-	<form method="post" action="api/register.php">
-	  <p>
-		<label for="name">Votre nom</label> : <input  type="text" name="name" id="name">
-		<label for="pseudo">Votre pseudo</label> : <input  type="text" name="pseudo" id="pseudo">
-		<label for="passwd">Votre mot de passe</label> : <input  type="password" name="pseudo" id="pseudo">
-		<input type="submit" value="Envoyer">
-	  </p>
-	</form>
+	<div class="login-page">
+	  <div class="form">
+		<h1>Register</h1>
+		<!-- <form class="register-form"> -->
+		<!--   <input type="text" placeholder="name"/> -->
+		<!--   <input type="password" placeholder="password"/> -->
+		<!--   <input type="text" placeholder="email address"/> -->
+		<!--   <button>create</button> -->
+		</form>
+		<form class="login-form" method="post" action="api/register.php">
+		  <input type="text" placeholder="username"/>
+		  <input type="password" placeholder="password"/>
+		  <input type="text" placeholder="email address"/>
+		  <button>register</button>
+		  <p class="message">Already registered? <a href="login.html">Sign In</a></p>
+		</form>
+	  </div>
+	</div>
   </body>
 </html>
