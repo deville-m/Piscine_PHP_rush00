@@ -14,7 +14,7 @@ function add_product($product_id, $name,
                      $price, $quantity,
                      $image, $visible) {
     foreach(func_get_args() as $k) {
-        if (!$k) return false;
+        if (!$k || $k === "") return false;
     }
     if (!($products = @unserialize(@file_get_contents('../private/product'))))
         return false;
@@ -38,7 +38,7 @@ function add_product($product_id, $name,
  * @return boolean of computation success
  */
 function remove_product($product_id) {
-    if ($product_id) {
+    if (!$product_id) {
         return (false);
     }
     if (!($products = @unserialize(@file_get_contents('../private/product'))))

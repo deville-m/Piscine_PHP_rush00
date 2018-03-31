@@ -6,7 +6,7 @@ function add_user($login, $passwd, $group) {
 	if (($content = file_get_contents("../private/passwd")) === FALSE)
 		return FALSE;
 	if (($data = @unserialize($content)) === FALSE || isset($data[$login]))
-		return FALSE; 
+		return FALSE;
 	$data[$login] = array();
 	$data[$login]['passwd'] = hash("whirlpool", $passwd);
 	$data[$login]['group'] = $group;
@@ -37,7 +37,7 @@ function remove_user($login) {
 	if (($content = file_get_contents("../private/passwd")) === FALSE)
 		return FALSE;
 	if (($data = @unserialize($content)) === FALSE)
-		return FALSE; 
+		return FALSE;
 	@unset($data[$login]);
 	if (($content = @serialize($data)) === FALSE)
 		return FALSE;
@@ -64,4 +64,23 @@ function modif_pwd($login, $oldpwd, $newpwd) {
 	return TRUE;
 }
 
+/*
+ * @authors ctrouill
+ * @doc retrieve user groups from login
+ * @params login user login
+ * @return Maybe string
+ */
+function get_user_group($login) {
+    if (!$login || $login == "") {
+        return (null);
+    }
+    if (!($users = @unserialize(@file_get_contents('../private/passwd'))))
+        return false;
+    foreach ($users as $p) {
+        if ($$p === $login) {
+            return ($users[$$p]['group'])
+        }
+    }
+    return (null);
+}
 ?>
