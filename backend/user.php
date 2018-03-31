@@ -1,6 +1,6 @@
 <?php
 
-include(__DIR__ . "general.php");
+include(__DIR__ . "/general.php");
 
 function add_user($login, $passwd, $group) {
 	if (!$login || !$passwd || !$group)

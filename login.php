@@ -1,3 +1,6 @@
+<?php @session_start(); ?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,11 +17,15 @@
 	<div class="login-page">
 	  <div class="form">
 		<h1>Login</h1>
+		<?php
+			if ($_SESSION['error'])
+				echo "<p>" . $_SESSION['error'] . "</p>\n";
+		?>
 		<form class="login-form" method="post" action="api/login.php">
-		  <input type="text" playceholder="username" name="username" id="username" required/>
-		  <input type="password" placeholder="password" name="password" id="password" required/>
-		  <button>login</button>
-		  <p class="message">Not registered? <a href="register.php">Create an account</a></p>
+			<input type="text" playceholder="username" name="username" id="username" required/>
+			<input type="password" placeholder="password" name="password" id="password" required/>
+			<button>login</button>
+			<p class="message">Pas enregistré? <a href="register.php">Creer un compte</a></p>
 		</form>
 	  </div>
 	</div>

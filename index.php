@@ -1,6 +1,8 @@
-<?php session_start();?>
-<!doctype html>
-<html lang="en">
+<?php @session_start(); ?>
+
+
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="utf-8">
   <title>CowShop</title>
@@ -17,7 +19,7 @@
 	  <a href="index.php">Boutique</a>
       <?php
       if (isset($_SESSION)) {
-          switch ($_SESSION['logged_on_user']) {
+          switch ($_SESSION['group']) {
           case "admin":
               echo '<a style="float:right" href="admin.php">'.$_SESSION['logged_on_user'].'</a>';
               echo '<a style="float:right" href="api/logout.php">'.'logout'.'</a>';

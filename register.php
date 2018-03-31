@@ -1,3 +1,5 @@
+<?php @session_start(); ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,18 +16,17 @@
 	<div class="login-page">
 	  <div class="form">
 		<h1>Register</h1>
-		<!-- <form class="register-form"> -->
-		<!--   <input type="text" placeholder="name"/> -->
-		<!--   <input type="password" placeholder="password"/> -->
-		<!--   <input type="text" placeholder="email address"/> -->
-		<!--   <button>create</button> -->
-		</form>
+		<?php
+
+			if ($_SESSION['error'])
+				echo "<p>" . $_SESSION['error'] . "</p>\n";
+
+		?>
 		<form class="login-form" method="post" action="api/register.php">
 		  <input type="text" placeholder="username" name="username" id="username" required/>
 		  <input type="password" placeholder="password" name="password" id="password" required/>
-		  <input type="text" placeholder="foo@bar.com" name="email" id="email" required/>
 		  <button>register</button>
-		  <p class="message">Already registered? <a href="login.php">Sign In</a></p>
+		  <p class="message">Déjà enregistré? <a href="login.php">Connectez vous</a></p>
 		</form>
 	  </div>
 	</div>
