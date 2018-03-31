@@ -1,7 +1,13 @@
 <?php
 
+define("PASSWD", "../private/passwd");
+define("PRODUCT", "../private/product");
+define("CATEGORY", "../private/category");
+define("ORDER", "../private/order");
+
+
 function file_to_data($file) {
-	if (!file_exist($file))
+	if (!file_exists($file))
 		return FALSE;
 	if (($content = @file_get_contents($file)) === FALSE)
 		return FALSE;
