@@ -1,18 +1,16 @@
 <?php
 
+import("general.php");
+
 function add_user($login, $passwd, $group) {
 	if (!$login || !$passwd || !$group)
 		return FALSE;
-	if (($content = file_get_contents("../private/passwd")) === FALSE)
-		return FALSE;
-	if (($data = @unserialize($content)) === FALSE || isset($data[$login]))
+	if (($data = file_to_data("../private/passwd")) === FALSE || isset($data[$login]))
 		return FALSE;
 	$data[$login] = array();
 	$data[$login]['passwd'] = hash("whirlpool", $passwd);
 	$data[$login]['group'] = $group;
-	if (($content = @serialize($data)) === FALSE)
-		return FALSE;
-	if (file_put_contents("../private/passwd", $content, LOCK_EX) === FALSE)
+	if (data_to_file($data, "../private/passwd") === FALSE)
 		return FALSE;
 	return TRUE;
 }
@@ -20,9 +18,7 @@ function add_user($login, $passwd, $group) {
 function auth($login, $passwd) {
 	if ($login == "" || $passwd == "")
 		return FALSE;
-	if (($content = @file_get_contents("../private/passwd")) === FALSE)
-		return FALSE;
-	if (($data = @unserialize($content)) === FALSE)
+	if (($data = file_to_data("../private/passwd")) === FALSE)
 		return FALSE;
 	$passwd = hash("whirlpool", $passwd);
 	if ($data[$login]['passwd'] === $passwd)
@@ -34,14 +30,10 @@ function auth($login, $passwd) {
 function remove_user($login) {
 	if ($login == "")
 		return FALSE;
-	if (($content = file_get_contents("../private/passwd")) === FALSE)
-		return FALSE;
-	if (($data = @unserialize($content)) === FALSE)
+	if (($data = file_to_data("../private/passwd")) === FALSE)
 		return FALSE;
 	@unset($data[$login]);
-	if (($content = @serialize($data)) === FALSE)
-		return FALSE;
-	if (file_put_contents("../private/passwd", $content, LOCK_EX) === FALSE)
+	if (data_to_file($data, "../private/passwd") === FALSE)
 		return FALSE;
 	return TRUE;
 }
@@ -49,17 +41,13 @@ function remove_user($login) {
 function modif_pwd($login, $oldpwd, $newpwd) {
 	if ($login == "" || $oldpwd == "" || $newpwd == "")
 		return FALSE;
-	if (($content = file_get_contents("../private/passwd")) === FALSE)
-		return FALSE;
-	if (($data = @unserialize($content)) === FALSE || !isset($data[$login]) || !isset($data[$login]['passwd']))
+	if (($data = file_to_data("../private/passwd")) === FALSE || !isset($data[$login]) || !isset($data[$login]['passwd']))
 		return FALSE;
 	$oldpwd = hash("whirlpool", $oldpwd);
 	if ($data[$login]['passwd'] !== $oldpwd)
 		return FALSE;
 	$data[$login]['passwd'] = hash("whirlpool", $newpwd);
-	if (($content = @serialize($data)) === FALSE)
-		return FALSE;
-	if (file_put_contents("../private/passwd", $content, LOCK_EX) === FALSE)
+	if (data_to_file($data, "../private/passwd") === FALSE)
 		return FALSE;
 	return TRUE;
 }
@@ -74,13 +62,10 @@ function get_user_group($login) {
     if (!$login || $login == "") {
         return (null);
     }
-    if (!($users = @unserialize(@file_get_contents('../private/passwd'))))
-        return false;
-    foreach ($users as $p) {
-        if ($$p === $login) {
-            return ($users[$$p]['group'])
-        }
-    }
-    return (null);
+    if (($data = file_to_data("../private/passwd")) === FALSE)
+    	return FALSE;
+    if (isset($data[$login]))
+    	return $data[$login]['group'];
 }
+
 ?>
