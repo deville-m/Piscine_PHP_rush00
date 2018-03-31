@@ -57,20 +57,4 @@ function remove_product($product_id) {
         return false;
     return true;
 }
-
-/*
- * @author rbaraud
-*/
-function list_product()
-{
-	if (($products = file_to_data(__DIR__."/../private/product")) === false)
-		return false;
-	echo '<ul class="product_list">';
-	foreach ($products as $item)
-	{
-		echo '<li class="products">'.$item['name'].'</li>';
-	}
-	echo '</ul>';
-}
-
 ?>
