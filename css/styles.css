@@ -1,5 +1,5 @@
 /*
- * Cowshop CSS
+0;95;0c * Cowshop CSS
  * @author ctrouill
  */
 
@@ -54,9 +54,30 @@ pre {
 }
 /* --------- */
 
-.header .wrap {
-    width: 100px;
-    margin: auto;
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.navbar a {
+	font-family: Lato;
+    float: left;
+    display: block;
+    color: #f2f2f2;
     text-align: center;
-    position: relative;
+	padding: 18px 18px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background: #ddd;
+    color: black;
 }
