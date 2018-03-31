@@ -21,21 +21,22 @@ function add_product($product_id, $name,
 		if (!$k || $k === "")
 			return false;
     }
-    if (($products = file_to_data("../private/product")) === FALSE)
+    if (($products = file_to_data(__DIR__."/private/product")) === FALSE)
 		return false;
-
-	echo "Here I am\n";
-
+	echo "ERROR1\n";
     if ($products[$product_id] != NULL) {
         return false;
-    }
+	}
+
+	print_r($products);
+
     $products[$product_id] = array();
     $products[$product_id]['name'] = $name;
     $products[$product_id]['price'] = $price;
     $products[$product_id]['quantity'] = $quantity;
     $products[$product_id]['image'] = $image;
     $products[$product_id]['visible'] = $visible;
-    if (!data_to_file($products, "../private/product"))
+    if (!data_to_file($products, __DIR__."/private/product"))
         return false;
     return true;
 }
@@ -49,10 +50,10 @@ function add_product($product_id, $name,
 function remove_product($product_id) {
     if (!$product_id)
         return false;
-    if (($products = data_to_file("../private/product")) === FALSE)
+    if (($products = data_to_file(__DIR__."/private/product")) === FALSE)
         return false;
     unset($products[$product_id]);
-    if (!data_to_file("../ private/product"))
+    if (!data_to_file(__DIR__."/private/product"))
         return false;
     return true;
 }
@@ -62,16 +63,14 @@ function remove_product($product_id) {
 */
 function list_product()
 {
-	echo "YO!\n";
-
-	if (($products = file_to_data(PRODUCT)) === false)
+	if (($products = file_to_data(__DIR__."/private/product")) === false)
 		return false;
-	echo '<ul class="product_list">\n';
+	echo '<ul class="product_list">';
 	foreach ($products as $item)
 	{
-		echo '<li class="products">'.$item['name'].'</li>\n';
+		echo '<li class="products">'.$item['name'].'</li>';
 	}
-	echo '</ul>\n';
+	echo '</ul>';
 }
 
 ?>

@@ -1,5 +1,4 @@
 <?PHP
-	include '../database.php';
-	echo "Here I'm included\n";
+	include __DIR__.'/../database.php';
 	list_product();
 ?>
