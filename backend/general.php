@@ -19,7 +19,7 @@ function file_to_data($file) {
 function data_to_file($data, $file) {
 	if (($content = @serialize($data)) === FALSE)
 		return FALSE;
-	if (@file_put_contents($content, $file, LOCK_EX) === FALSE)
+	if (@file_put_contents($file, $content, LOCK_EX) === FALSE)
 		return FALSE;
 	return TRUE;
 }

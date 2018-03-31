@@ -12,6 +12,7 @@ function add_user($login, $passwd, $group) {
 	$data[$login]['group'] = $group;
 	if (data_to_file($data, PASSWD) === FALSE)
 		return FALSE;
+
 	return TRUE;
 }
 
