@@ -29,8 +29,8 @@
               break;
           case "":
               echo '<a style="float:right" href="panier.php">panier ('."0".'€)</a>';
-              echo '<a style="float:right" href="login.html">'.'log in'.'</a>';
-              echo '<a style="float:right" href="register.html">'.'sign up'.'</a>';
+              echo '<a style="float:right" href="login.php">'.'log in'.'</a>';
+              echo '<a style="float:right" href="register.php">'.'sign up'.'</a>';
           }
       }
       ?>
