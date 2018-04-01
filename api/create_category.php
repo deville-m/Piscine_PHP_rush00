@@ -13,15 +13,15 @@ if ($_SESSION['group'] != "admin") {
     header("Location: ../index.php");
     exit;
 } else {
-    if ($_POST["name"]) {
+    if ($_POST["name"] && $_POST["image"]) {
         if (isset($_POST['visibility'])) {
-            add_category($_POST["name"], true);
+            add_category($_POST["name"], $_POST["image"], true);
         } else {
-            add_category($_POST["name"], false);
+            add_category($_POST["name"], $_POST["image"], false);
         }
         header("Location: ../admin.php");
         exit;
     }
-    header("HTTP/1.1 405 Method Not Allowed");
+    header("HTTP/1.1 405 Method Noet Allowed");
 }
 ?>
