@@ -22,11 +22,8 @@ if ($_SESSION['group'] === "admin") {
 		<div class="man-box center-box">
 			<?php
 			$product = file_to_data(__DIR__ . "/private/product");
-			/* print_r($product); */
-			$list = explode(" ", "toto11 toto12 toto21 toto22");
 			echo '<h2> Panier </h2>';
 			echo '<hr><br>';
-			$tot = 0;
 			if (!empty($_SESSION['basket'])) {
 				foreach ($_SESSION['basket'] as $p) {
 					if (!isset($product[$p])) continue;
