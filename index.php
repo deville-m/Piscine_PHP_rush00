@@ -1,8 +1,8 @@
 <?php @session_start();
 
 	include_once ("./backend/general.php");
-/*	include_once ("./backend/visibility.php");*/
 
+	$_SESSION['current_page'] = "";
   if ($_GET)
   {
     if (($_GET['type'] === "category" || $_GET['type'] === "product") && $_GET['id'])
@@ -16,24 +16,23 @@
 			$cat_list = array();
 			foreach ($tmp as $key => $value)
 				$cat_list[] = $key;
-			if (!in_array($_GET['id'], $cat_list) || !$tmp[$_GET['id']]['visible'])
+			if (!$cat_list || !in_array($_GET['id'], $cat_list) || !$tmp[$_GET['id']]['visible'])
 			{
 				header("Location: /index.php");
 				exit ;
 			}
-      $id = $_GET['id'];
+    	$id = $_GET['id'];
 			$_SESSION['current_page'] = "?type=".$_GET['type']."&id=".$_GET['id'];
+			}
     }
     else
 		{
       $_GET['type'] = "all";
-			$_SESSION['current_page'] = "";
 		}
   }
 	else
 	{
 		$_GET['type'] = "all";
-		$_SESSION['current_page'] = "";
 	}
 ?>
 <!DOCTYPE html>

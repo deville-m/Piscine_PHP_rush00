@@ -45,7 +45,7 @@ else if ($type === 'product')
 					$key."</li>
 					</a>\n";
 			}
-			else if (in_array($key, $cat_prod) && $item['quantity'] && $item['visible'])
+			else if ($key && $cat_prod && @in_array($key, $cat_prod) && $item['quantity'] && $item['visible'])
 			{
 				echo "<a href=\"#".$type."_".$key."\">
 					<li class=\"".$type."\" id=\"\" >".

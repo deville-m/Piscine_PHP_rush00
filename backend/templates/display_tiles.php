@@ -43,6 +43,7 @@ else if ($type === "product")
 	{
 		if (is_visible($key))
 		{
+			print_r($cat_prod);
 			if (!$id && $item['quantity'] && $item['visible'])
 			{
 				echo "<li class=\"tiles\"
@@ -58,7 +59,7 @@ else if ($type === "product")
 					<p>".$item['price']."€</p>
 					</li></a>";
 			}
-			else if (in_array($key, $cat_prod) && $item['quantity'] && $item['visible'])
+			else if ($key && $cat_prod && @in_array($key, $cat_prod) && $item['quantity'] && $item['visible'])
 			{
 				echo "<li class=\"tiles\"
 					id=\"".$type."_".$key."\"
