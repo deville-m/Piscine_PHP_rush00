@@ -1,7 +1,7 @@
 <?php
 
 include_once(__DIR__ . "/backend/general.php");
-
+date_default_timezone_set('Europe/Paris');
 @session_start();
 if ($_SESSION['group'] !== "admin")
 	header("Location: ../index.php");
@@ -111,8 +111,6 @@ if ($_SESSION['group'] !== "admin")
 					</li>
 				</ul>
 		</form>
-
-
 		<hr>
 
 
@@ -156,24 +154,22 @@ if ($_SESSION['group'] !== "admin")
 
 	<div class="man-box center-box">
 		<h2>Historique des achats</h2>
-		<hr><br>
 		<?php
 		$list = file_to_data("./private/order");
 		if (!empty($list)) {
 			foreach ($list as $p) {
-				print_r($p);
 				$tot = 0;
+				echo "<hr>";
 				echo "<div class=\"textbox\">";
-				echo "<b>".$p['user']."</b>";
+				echo "<h3><b>".$p['user']."</b> the <i>".date("Y-m-d H:i:s",$p['timestamp'])."</i>"."</h3>";
 				echo "<ul>";
 				foreach ($p['products'] as $x => $pp) {
 					$tot += $pp[0];
-					echo "<li>".$x." x".$pp[1]."for ".$pp[0]."€</li>";
+					echo "<li><u>".$x."</u> x <b>".$pp[1]."</b> for ".$pp[0]."€</li>";
 				}
 				echo "</ul>";
-				echo "<p>Total: ".$tot."</p>";
+				echo "<p style=\"text-align: right;\">Total: <b>".$tot."</b>€</p>";
 				echo "</div>";
-				echo "<hr>";
 			}
 		} else {
 			echo "<p style=\"text-align: center;\">Pas encore de commandes.</p>";
