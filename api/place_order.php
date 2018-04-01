@@ -10,13 +10,13 @@ if (!$_SESSION['logged_on_user']) {
 
 if ($_SESSION['basket'] && ($data = file_to_data(__DIR__ . PRODUCT))) {
 	$tmp = array();
-	$tmp[0] = $_SESSION['logged_on_user'];
-	$tmp[1] = time();
+	$tmp["user"] = $_SESSION['logged_on_user'];
+	$tmp["timestamp"] = time();
 	foreach ($_SESSION['basket'] as $k) {
 		if ($data[$k]['quantity'] == 0)
 			continue;
 		$data[$k]['quantity']--;
-		array_push($tmp, $k);
+		$tmp[$k] = $data[$k]['price'];
 	}
 	$_SESSION['basket'] = array();
 	$_SESSION['total'] = 0;
