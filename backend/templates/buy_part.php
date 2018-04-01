@@ -10,7 +10,7 @@ function echo_buy($name)
 	echo "</li>\n";
 
 	echo "<li class=\"list_line_buy\">";
-	echo "<input class=\"cow_buy\" type=\"submit\" name=\"product\" placeholder=\"BUY\" value=\"".$name."\">\n";
+	echo "<input class=\"cow_buy\" type=\"submit\" name=\"product\" title=\"BUY\" value=\"".$name."\">\n";
 	echo "</li>\n";
 
 	echo "</ul>\n";

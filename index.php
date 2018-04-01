@@ -108,7 +108,7 @@
     <?PHP
       if ($_GET['type'] === "all")
     	{
-		    echo "<h1>Mmmmmm look at those Cow</h1>";
+		    echo "<h1>Mmmmmm look at those Cows</h1>";
 				echo "<ul class=\"tile-mosaic\">";
   				$type = "product";
   				include ("./backend/templates/display_tiles.php");
