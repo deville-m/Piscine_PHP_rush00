@@ -16,13 +16,16 @@ if ($_POST['submit'] !== "OK" || !$_POST['product']) {
 }
 if (($category = file_to_data(__DIR__ . CATEGORY)) === FALSE)
 	exit();
+
 for ($i = 0; $i < count($category); $i++) {
 	for ($j = 0; $j < count($category[$i]['product']); $j++) {
-		if ($category[$i]['product'][$j] === $_POST['product'] && isset($category[$i]['product'][$j]))
-			unset($category[$i]['product'][$j]);
+        if ($category[$i]['product'][$j] === $_POST['product'] && isset($category[$i]['product'][$j])) {
+            unset($category[$i]['product'][$j]);
+        }
 	}
 }
-#remove_product($_POST['product']);
-#header("Location: ../admin.php");
+
+remove_product($_POST['product']);
+header("Location: ../admin.php");
 
 ?>
