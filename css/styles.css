@@ -118,14 +118,13 @@ a.active {
 }
 
 .center-box input.valid_btn {
-	font-family: "Roboto", sans-serif;
-	outline: 0;
 	background: #82BD62;
-	border: 0;
-	margin: 0 0 15px;
-	padding: 1em 3em;
-	box-sizing: border-box;
-	font-size: 14px;
+
+}
+
+.center-box input.clear_btn {
+	background: #e74c3c;
+
 }
 
 .center-box button {

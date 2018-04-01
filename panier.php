@@ -12,8 +12,8 @@ if ($_SESSION['group'] === "admin") {
 		<title>CowShop</title>
 		<meta name="description" content="CowShop">
 		<meta name="author" content="42">
-		<link rel="stylesheet" href="css/styles.css">
-		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="/css/styles.css">
+		<link rel="stylesheet" href="/css/main.css">
 	</head>
 	<body>
 		<div class="header">
@@ -38,10 +38,21 @@ if ($_SESSION['group'] === "admin") {
 			echo '<br><hr>';
 			echo 'Total: '.$_SESSION['total'].'€';
 			?>
-			<br>
-			<form action="api/place_order.php" method="post" id="buy">
-				<input type="submit" name="submit" value="acheter">
-			</form>
+
+			<div class="">
+				<ul class="ul_line">
+					<li class="list_line">
+						<form action="/api/place_order.php" method="post" id="buy">
+							<input class="over-pointer valid_btn" type="submit" name="submit" value="acheter">
+						</form>
+					</li>
+					<li class="list_line">
+						<form action="/api/cancel_basket.php" method="post" id="buy">
+							<input class="over-pointer clear_btn" type="submit" name="submit" value="Clear Basket">
+						</form>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</body>
 </html>
