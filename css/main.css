@@ -56,10 +56,27 @@ h2 {
 }
 
 /* Buying cow */
+.list_line_buy {
+	display: inline-block;
+	vertical-align: top;
+}
+
 .cow_quantity {
+	margin-bottom: 3px;
+	padding: 6px 0px;
+	background-color: #7f8c8d;
+	border: none;
 }
 
 .cow_buy {
+	background-color: #7F8C8D;
+	background-image: url('../img/basket.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 24px 24px;
+	padding: 6px 12px;
+	border: none;
+	cursor: pointer;
 }
 
 /* Iframe stuffs */
@@ -95,7 +112,7 @@ li.tiles {
 }
 
 .tiles:hover {
-  background-color: #27ae60;
+  background-color: #4CAF50;
 }
 
 /*======== Right menu list ========*/
@@ -108,11 +125,10 @@ li.tiles {
 .category {
   padding: 0.5em;
   margin-bottom: 0.5em;
-  background-color: #2ecc71;
+  background-color: #4CAF50;
 }
 
 .product {
-
   padding: 0.5em;
   margin-bottom: 0.5em;
   background-color: #f1c40f;
