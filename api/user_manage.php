@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include '../backend/database.php';
+include '../backend/user.php';
 
 /*
  * @author ctrouill

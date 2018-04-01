@@ -18,34 +18,11 @@ if ($_SESSION['group'] !== "admin")
 		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
-		<header>
-			<div class="navbar" style="z-index: 500;">
-				<a class="active" href="index.php">Cow Shop</a>
-				<a href="index.php">Boutique</a>
-				<?php
-				if (isset($_SESSION)) {
-					switch ($_SESSION['group']) {
-						case "admin":
-							echo '<a style="float:right" href="admin.php">'.$_SESSION['logged_on_user'].'</a>';
-							echo '<a style="float:right" href="api/logout.php">'.'logout'.'</a>';
-							break;
-						case "client":
-							echo '<a style="float:right" href="panier.php">panier ('."12".'€)</a>';
-							echo '<a style="float:right" href="index.php">'.$_SESSION['logged_on_user'].'</a>';
-							echo '<a style="float:right" href="api/logout.php">'.'logout'.'</a>';
-							break;
-						case "":
-							echo '<a style="float:right" href="panier.php">panier ('."0".'€)</a>';
-							echo '<a style="float:right" href="login.php">'.'log in'.'</a>';
-							echo '<a style="float:right" href="register.php">'.'sign up'.'</a>';
-					}
-				}
-				?>
-			</div>
-		</header>
+		<div class="header">
+			<?php include("./header.php"); ?>
+		</div>
 		<span/>
-		<div style="padding-top: 60px;">
-
+		<div style="padding-top: 60px;"/>
 			<div class="cat-box form">
 				<h2>Création catégorie</h2>
 				<form action="api/create_category.php" method="post">
@@ -54,9 +31,7 @@ if ($_SESSION['group'] !== "admin")
 					Visible? <input type="checkbox" name="visible" value="visibility"><br>
 					<input type="submit" name="submit" value="OK"><br>
 				</form>
-			</div>
-
-			<div class="mk-box form">
+				<hr>
 				<h2>Création produit</h2>
 				<form action="api/create_product.php" method="post" id="mk">
 					Nom: <input type="text" name="name" placeholder="Ex: Lasso saucisson"required><br>
@@ -64,40 +39,9 @@ if ($_SESSION['group'] !== "admin")
 					Quantite: <input type="number" name="quantity" min="0"required>
 					Image: <input type="url" name="image" placeholder="Ex: https://google.com/image/..."required>
 					Visible? <input type="checkbox" name="visible" value="visibility"><br>
+					Mise a Jour <input type="checkbox" name="maj" value="maj"><br>
 					Catégorie: <br>
 					<select name="liste" form="mk" multiple required>
-						<?php
-						$list = get_data_key_list(__DIR__ . "/private/category");
-						foreach ($list as $e) {
-							echo "<li>".$e."</li>";
-							echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-						}
-						?>
-					</select>
-					<input type="submit" name="submit" value="OK"><br>
-				</form>
-			</div>
-
-			<div class="mk-box form">
-				<h2>Update produit</h2>
-				<form action="api/update_product.php" method="put" id="update">
-					Produit a modifier: <select name="product" form="update" required>
-					<?php
-					$list = get_data_key_list(__DIR__ . "/private/product");
-					foreach ($list as $e) {
-						echo "<li>".$e."</li>";
-						echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-					}
-					?>
-					</select>
-
-					Nouveau Nom: <input type="text" name="name" placeholder="Ex: Lasso saucisson"required><br>
-					Nouveau Prix: <input type="number" name="price" min="0"required><br>
-					Nouvelle Quantite: <input type="number" name="quantity" min="0"required>
-					Nouvelle Image: <input type="url" name="image" placeholder="Ex: https://google.com/image/..."required>
-					Visible? <input type="checkbox" name="visible" value="visibility"><br>
-					Catégorie: <br>
-					<select name="liste" form="update" multiple required>
 						<?php
 						$list = get_data_key_list(__DIR__ . "/private/category");
 						foreach ($list as $e) {
@@ -124,9 +68,7 @@ if ($_SESSION['group'] !== "admin")
 					</select>
 					<input type="submit" name="submit" value="OK">
 				</form>
-			</div>
-
-			<div class="rm-box form">
+				<hr>
 				<h2>Supprimer catégorie</h2>
 				<form action="api/remove_category.php" method="post" id="rms">
 					Catégorie: <select name="category" form="rms" required>
@@ -140,9 +82,7 @@ if ($_SESSION['group'] !== "admin")
 					</select>
 					<input type="submit" name="submit" value="OK">
 				</form>
-			</div>
-
-			<div class="viz-box form">
+				<hr>
 				<h2>Rendre Visible</h2>
 				<form action="api/make_visible.php" method="post" id="viz">
 					Produit: <select name="liste" form="viz" required>
@@ -172,10 +112,31 @@ if ($_SESSION['group'] !== "admin")
 					<?php
 					$list = get_data_key_list(__DIR__ . "/private/passwd");
 					foreach ($list as $e) {
+						if ($e == "root") continue;
 						echo "<li>".$e."</li>";
 						echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
 					}
 					?>
+					</select>
+					<input type="submit" name="submit" value="OK">
+				</form>
+				<hr>
+				<h2>Update Groupe</h2>
+				<form action="api/update_group.php" method="post" id="manageg">
+					Compte: <select name="user" form="manageg" required>
+					<?php
+					$list = get_data_key_list(__DIR__ . "/private/passwd");
+					foreach ($list as $e) {
+						if ($e == "root") continue;
+						echo "<li>".$e."</li>";
+						echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+					}
+					?>
+					</select><br>
+					Nouveau groupe:
+					<select name="group" form="manageg" required>
+						<option value="admin">admin</option>
+						<option value="client">client</option>
 					</select>
 					<input type="submit" name="submit" value="OK">
 				</form>

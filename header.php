@@ -13,7 +13,7 @@
 	    if (isset($_SESSION)) {
 	        switch ($_SESSION['group']) {
 	        case "admin":
-	            echo '<a class="btn" style="float:right" href="admin.php">'.$_SESSION['logged_on_user'].'</a>';
+	            echo '<a style="float:right" href="admin.php">'."Administrator".'</a>';
 	            echo '<a class="btn" style="float:right" href="api/logout.php">'.'Logout'.'</a>';
 	            break;
 	        case "client":

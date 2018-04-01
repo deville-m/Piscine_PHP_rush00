@@ -11,6 +11,19 @@ if ($_SESSION['group'] != "admin") {
     header("Location: ../index.php");
     exit;
 } else {
+	if ($_POST['product']
+		&& $_POST["name"]
+        && $_POST["price"]
+        && $_POST["quantity"]
+        && $_POST["image"]) {
+		if (isset($_POST['add'])) {
+			/* todo: update product */
+            /* add_product($_POST["name"], $_POST["price"], $_POST["quantity"], $_POST["image"], true); */
+        } else {
+			/* todo: update product */
+            /* add_product($_POST["name"], $_POST["price"], $_POST["quantity"], $_POST["image"], true); */
+        }
+	}	
 	header("Location: ../admin.php");
     exit;
 }
