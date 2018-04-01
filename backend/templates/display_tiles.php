@@ -43,7 +43,6 @@ else if ($type === "product")
 	{
 		if (is_visible($key))
 		{
-			print_r($cat_prod);
 			if (!$id && $item['quantity'] && $item['visible'])
 			{
 				echo "<li class=\"tiles\"

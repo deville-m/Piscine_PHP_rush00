@@ -23,7 +23,6 @@
 			}
     	$id = $_GET['id'];
 			$_SESSION['current_page'] = "?type=".$_GET['type']."&id=".$_GET['id'];
-			}
     }
     else
 		{
