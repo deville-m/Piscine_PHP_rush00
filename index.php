@@ -1,4 +1,16 @@
-<?php @session_start(); ?>
+<?php @session_start();
+
+  if ($_GET)
+  {
+    if ($_GET['type'])
+    {
+      $type = $_GET['type'];
+      $id = $_GET['id'];
+    }
+    else
+      $_GET['type'] = "all";
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
