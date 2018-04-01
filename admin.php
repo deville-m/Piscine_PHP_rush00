@@ -9,133 +9,137 @@ if ($_SESSION['group'] !== "admin")
 ?>
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>CowShop</title>
-		<meta name="description" content="CowShop">
-		<meta name="author" content="42">
-		<link rel="stylesheet" href="css/styles.css">
-		<link rel="stylesheet" href="css/main.css">
-	</head>
-	<body>
-		<div class="header">
-			<?php include("./header.php"); ?>
-		</div>
-		<span/>
-		<div style="padding-top: 60px;"/>
-			<div class="cat-box center-box">
-				<h2>Création catégorie</h2>
-				<form action="api/create_category.php" method="post">
-					Catégorie: <input type="text" name="name" placeholder="Ex: Useless Things"required>
-					Image: <input type="url" name="image" placeholder="Ex: https://google.com/image/..."required>
-					Visible? <input type="checkbox" name="visible" value="visibility"><br>
-					<input type="submit" name="submit" value="OK"><br>
-				</form>
-				<hr>
-				<h2>Création produit</h2>
-				<form action="api/create_product.php" method="post" id="mk">
-					Nom: <input type="text" name="name" placeholder="Ex: Lasso saucisson"required><br>
-					Prix: <input type="number" name="price" min="0"required><br>
-					Quantite: <input type="number" name="quantity" min="0"required>
-					Image: <input type="url" name="image" placeholder="Ex: https://google.com/image/..."required>
-					Visible? <input type="checkbox" name="visible" value="visibility"><br>
-					Mise a Jour <input type="checkbox" name="maj" value="maj"><br>
-					<?php
+<head>
+	<meta charset="utf-8">
+	<title>CowShop</title>
+	<meta name="description" content="CowShop">
+	<meta name="author" content="42">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<div class="header">
+		<?php include("./header.php"); ?>
+	</div>
+	<div class="cat-box center-box">
+		<h2>Création catégorie</h2>
+		<form action="api/create_category.php" method="post">
+			Catégorie: <input type="text" name="name" placeholder="Ex: Useless Things"required>
+			Image: <input type="url" name="image" placeholder="Ex: https://google.com/image/..."required>
+			Visible? <input type="checkbox" name="visible" value="visibility"><br>
+			<input type="submit" name="submit" value="OK"><br>
+		</form>
+		<hr>
+		<h2>Création produit</h2>
+		<form action="api/create_product.php" method="post" id="mk">
+			Nom: <input type="text" name="name" placeholder="Ex: Lasso saucisson"required><br>
+			<input type="number" placeholder="Price" step="1" name="price" min="0"required><br>
+			Quantite: <input type="number" name="quantity" min="0"required>
+			Image: <input type="url" name="image" placeholder="Ex: https://google.com/image/..."required>
+			Visible? <input type="checkbox" name="visible" value="visibility"><br>
+			Mise a Jour <input type="checkbox" name="maj" value="maj"><br>
+			<div class="">
+				<h3>Categories</h3>
+				<ul class="ul_line">
+				<?PHP
 					$list = get_data_key_list(__DIR__ . "/private/category");
 					foreach ($list as $key) {
-						echo $key . ' <input type="checkbox" name="' . $key . '" value="maj"><br>';
+						echo "<li class=\"list_line check_cat\">".$key.' <input type="checkbox" name="' . $key . '" value="maj"></li>';
 					}
-					?>
-					<input type="submit" name="submit" value="OK"><br>
-				</form>
+				?>
+			</ul>
 			</div>
+			<input type="submit" name="submit" value="OK">
+		</form>
+	</div>
 
-			<div class="rm-box center-box">
-				<h2>Supprimer produit</h2>
-				<form action="api/remove_product.php" method="post" id="rm">
-					Produit: <select name="product" form="rm" required>
-					<?php
-					$list = get_data_key_list(__DIR__ . "/private/product");
-					foreach ($list as $e) {
-						echo "<li>".$e."</li>";
-						echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-					}
-					?>
-					</select>
-					<input type="submit" name="submit" value="OK">
-				</form>
-				<hr>
-				<h2>Supprimer catégorie</h2>
-				<form action="api/remove_category.php" method="post" id="rms">
-					Catégorie: <select name="category" form="rms" required>
-					<?php
-					$list = get_data_key_list(__DIR__ . "/private/category");
-					foreach ($list as $e) {
-						echo "<li>".$e."</li>";
-						echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-					}
-					?>
-					</select>
-					<input type="submit" name="submit" value="OK">
-				</form>
-				<hr>
-				<h2>Rendre Visible</h2>
-				<form action="api/make_visible.php" method="post" id="viz">
-					Produit: <select name="liste" form="viz" required>
-					<?php
-					$list = get_data_key_list(__DIR__ . "/private/product");
-					foreach ($list as $e) {
-						echo "<li>".$e."</li>";
-						echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-					}
-					echo '</select><br>';
-					echo 'Categorie: <select name="liste2" form="viz">';
-					$list = get_data_key_list(__DIR__ . "/private/category");
-					foreach ($list as $e) {
-						echo "<li>".$e."</li>";
-						echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-					}
-					?>
-					</select><br>
-					<input type="submit" name="submit" value="OK">
-				</form>
-			</div>
+	<div class="rm-box center-box">
+		<h2>Supprimer produit</h2>
+		<form action="api/remove_product.php" method="post" id="rm">
+			Produit: <select name="product" form="rm" required>
+			<?php
+			$list = get_data_key_list(__DIR__ . "/private/product");
+			foreach ($list as $e) {
+				echo "<li>".$e."</li>";
+				echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+			}
+			?>
+			</select>
+			<input type="submit" name="submit" value="OK">
+		</form>
+		<hr>
+		<h2>Supprimer catégorie</h2>
+		<form action="api/remove_category.php" method="post" id="rms">
+			Catégorie: <select name="category" form="rms" required>
+			<?php
+			$list = get_data_key_list(__DIR__ . "/private/category");
+			foreach ($list as $e) {
+				echo "<li>".$e."</li>";
+				echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+			}
+			?>
+			</select>
+			<input type="submit" name="submit" value="OK">
+		</form>
+		<hr>
+		<h2>Rendre Visible</h2>
+		<form action="api/make_visible.php" method="post" id="viz">
+			Produit: <select name="liste" form="viz" required>
+			<?php
+			$list = get_data_key_list(__DIR__ . "/private/product");
+			foreach ($list as $e) {
+				echo "<li>".$e."</li>";
+				echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+			}
+			echo '</select><br>';
+			echo 'Categorie: <select name="liste2" form="viz">';
+			$list = get_data_key_list(__DIR__ . "/private/category");
+			foreach ($list as $e) {
+				echo "<li>".$e."</li>";
+				echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+			}
+			?>
+			</select><br>
+			<input type="submit" name="submit" value="OK">
+		</form>
+	</div>
 
-			<div class="man-box center-box">
-				<h2>Gestion Utilisateurs</h2>
-				<form action="api/user_manage.php" method="post" id="manage">
-					Supprimer compte: <select name="liste" form="manage" required>
-					<?php
-					$list = get_data_key_list(__DIR__ . "/private/passwd");
-					foreach ($list as $e) {
-						if ($e == "root") continue;
-						echo "<li>".$e."</li>";
-						echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-					}
-					?>
-					</select>
-					<input type="submit" name="submit" value="OK">
-				</form>
-				<hr>
-				<h2>Update Groupe</h2>
-				<form action="api/update_group.php" method="post" id="manageg">
-					Compte: <select name="user" form="manageg" required>
-					<?php
-					$list = get_data_key_list(__DIR__ . "/private/passwd");
-					foreach ($list as $e) {
-						if ($e == "root") continue;
-						echo "<li>".$e."</li>";
-						echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-					}
-					?>
-					</select><br>
-					Nouveau groupe:
-					<select name="group" form="manageg" required>
-						<option value="admin">admin</option>
-						<option value="client">client</option>
-					</select>
-					<input type="submit" name="submit" value="OK">
-				</form>
-			</div>
-	</body>
+	<div class="man-box center-box">
+		<h2>Gestion Utilisateurs</h2>
+		<form action="api/user_manage.php" method="post" id="manage">
+			Supprimer compte: <select name="liste" form="manage" required>
+			<?php
+			$list = get_data_key_list(__DIR__ . "/private/passwd");
+			foreach ($list as $e) {
+				if ($e == "root") continue;
+				echo "<li>".$e."</li>";
+				echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+			}
+			?>
+			</select>
+			<input type="submit" name="submit" value="OK">
+		</form>
+		<hr>
+		<h2>Update Groupe</h2>
+		<form action="api/update_group.php" method="post" id="manageg">
+			Compte: <select name="user" form="manageg" required>
+			<?php
+			$list = get_data_key_list(__DIR__ . "/private/passwd");
+			foreach ($list as $e) {
+				if ($e == "root") continue;
+				echo "<li>".$e."</li>";
+				echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+			}
+			?>
+			</select><br>
+			Nouveau groupe:
+			<select name="group" form="manageg" required>
+				<option value="admin">admin</option>
+				<option value="client">client</option>
+			</select>
+			<input type="submit" name="submit" value="OK">
+		</form>
+	</div>
+
+</body>
 </html>
