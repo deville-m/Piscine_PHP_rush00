@@ -26,40 +26,42 @@ if ($_SESSION['group'] !== "admin")
 		<p class="p_admin">A whole new category? Today is a great day!</p>
 		<form action="api/create_category.php" method="post">
 			<ul class="ul_line">
-				<li>
+				<li class="list_line">
 					<input type="text" name="name" placeholder="Name"required>
 				</li>
-				<li>
+				<li class="list_line">
 					<input type="url" name="image" placeholder="Image URL"required>
 				</li>
-				<li>
+				<li class="list_line">
 					<ul class="ul_line">
 						<li class="list_line check_cat">
 							Visible? <input type="checkbox" name="visible" value="visibility">
 						</li>
 					</ul>
 				</li>
+				<li>
+					<input class="valid_btn over-pointer" type="submit" name="submit" value="OK"><br>
+				</li>
 			</ul>
-			<input type="submit" name="submit" value="OK"><br>
 		</form>
 		<hr>
 		<h2>Product creation</h2>
 		<p class="p_admin">Great! A new cow.</p>
 		<form action="api/create_product.php" method="post" id="mk">
 			<ul class="ul_line">
-			<li>
+			<li class="list_line">
 				<input type="text" name="name" placeholder="Name"required>
 			</li>
-			<li>
+			<li class="list_line">
 				<input type="number" placeholder="Price"  name="price" step="1" min="0"required>
 			</li>
-			<li>
+			<li class="list_line">
 				<input type="number" placeholder="Quantity" name="quantity" step="1" min="0"required>
 			</li>
-			<li>
+			<li class="list_line">
 				<input type="url" name="image" placeholder="Image URL"required>
 			</li>
-			<li>
+			<li class="list_line">
 				<ul class="ul_line">
 					<li class="list_line check_cat">
 						Visible? <input type="checkbox" name="visible" value="visibility">
@@ -69,9 +71,8 @@ if ($_SESSION['group'] !== "admin")
 					</li>
 				</ul>
 			</li>
-			</ul>
 
-			<div class="">
+			<li>
 				<h3>Categories</h3>
 				<ul class="ul_line">
 				<?PHP
@@ -80,14 +81,43 @@ if ($_SESSION['group'] !== "admin")
 						echo "<li class=\"list_line check_cat\">".$key.' <input type="checkbox" name="' . $key . '" value="maj"></li>';
 					}
 				?>
+			</li>
+			<li><input class="valid_btn over-pointer" type="submit" name="submit" value="OK"></li>
 			</ul>
-			</div>
-			<input class="over-pointer" type="submit" name="submit" value="OK">
 		</form>
 	</div>
 
 	<div class="rm-box center-box">
-		<h2>Supprimer produit</h2>
+		<h2>Delete a Category</h2>
+		<p class="p_admin">Such a shame, I loved those cows.</p>
+		<form action="api/remove_category.php" method="post" id="rms">
+				<ul class="ul_line">
+					<li class="list_line check_cat">
+						<p>Category:</p>
+					</li>
+					<li class="list_line check_cat">
+						<select name="category" form="rms" required>
+						<?php
+						$list = get_data_key_list(__DIR__ . "/private/category");
+						foreach ($list as $e) {
+							echo "<li>".$e."</li>";
+							echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+						}
+						?>
+						</select>
+					</li>
+					<li class="list_line check_cat">
+							<input type="submit" name="submit" value="OK">
+					</li>
+				</ul>
+		</form>
+
+
+		<hr>
+
+
+		<h2>Delete a Product</h2>
+		<p class="p_admin">Are you sure you want to "Delete" her?</p>
 		<form action="api/remove_product.php" method="post" id="rm">
 			Produit: <select name="product" form="rm" required>
 			<?php
@@ -101,20 +131,7 @@ if ($_SESSION['group'] !== "admin")
 			<input type="submit" name="submit" value="OK">
 		</form>
 		<hr>
-		<h2>Supprimer catégorie</h2>
-		<form action="api/remove_category.php" method="post" id="rms">
-			Catégorie: <select name="category" form="rms" required>
-			<?php
-			$list = get_data_key_list(__DIR__ . "/private/category");
-			foreach ($list as $e) {
-				echo "<li>".$e."</li>";
-				echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-			}
-			?>
-			</select>
-			<input type="submit" name="submit" value="OK">
-		</form>
-		<hr>
+
 		<h2>Rendre Visible</h2>
 		<form action="api/make_visible.php" method="post" id="viz">
 			Produit: <select name="liste" form="viz" required>
