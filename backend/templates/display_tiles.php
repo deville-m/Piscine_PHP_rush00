@@ -3,7 +3,7 @@
 @session_start();
 
 include_once __DIR__."/../general.php";
-include_once __DIR__."/../is_visible.php";
+include_once __DIR__."/is_visible.php";
 include_once __DIR__."/buy_part.php";
 
 if ($type === "category")
