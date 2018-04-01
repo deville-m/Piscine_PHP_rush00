@@ -1,17 +1,39 @@
 <?php @session_start();
 
+	include_once ("./backend/general.php");
+
   if ($_GET)
   {
-    if ($_GET['type'])
+    if (($_GET['type'] === "category" || $_GET['type'] === "product") && $_GET['id'])
     {
       $type = $_GET['type'];
+			if (($tmp = file_to_data("./private/category")) === false)
+			{
+				header("Location: /index.php");
+				exit ("TO\n");
+			}
+			$cat_list = array();
+			foreach ($tmp as $key => $value)
+				$cat_list[] = $key;
+			if (!in_array($_GET['id'], $cat_list))
+			{
+				header("Location: /index.php");
+				exit ;
+			}
       $id = $_GET['id'];
+			$_SESSION['current_page'] = "?type=".$_GET['type']."&id=".$_GET['id'];
     }
     else
+		{
       $_GET['type'] = "all";
+			$_SESSION['current_page'] = "";
+		}
   }
 	else
+	{
 		$_GET['type'] = "all";
+		$_SESSION['current_page'] = "";
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">

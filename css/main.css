@@ -55,6 +55,13 @@ h2 {
   background: linear-gradient(to left, #76b852, #8DC26F);
 }
 
+/* Buying cow */
+.cow_quantity {
+}
+
+.cow_buy {
+}
+
 /* Iframe stuffs */
 .clean-iframe {
   width: 100%;
