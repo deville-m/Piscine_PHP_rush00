@@ -28,11 +28,10 @@ if ($_SESSION['group'] != "admin") {
 			print_r($list);
 			if (!empty($list)) {
 				foreach ($list as $p) {
-					/* print_r($p); */
-					/* echo "<div class=\"textbox\">";
-					   echo "<div class=\"left\">Product: <strong>".$p."</strong></div>";
-					   echo "<div class=\"right\">Price: <i>".$product[$p]['price']."</i> €</div><br>";
-					   echo "</div><br>"; */
+					echo "<div class=\"textbox\">";
+					echo "<div class=\"left\">Product: <strong>".$p."</strong></div>";
+					echo "<div class=\"right\">Price: <i>".$product[$p]['price']."</i> €</div><br>";
+					echo "</div><br>";
 				}
 			} else {
 				echo "<p style=\"text-align: center;\">Pas encore de commandes.</p>";
