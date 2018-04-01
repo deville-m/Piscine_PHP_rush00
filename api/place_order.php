@@ -16,7 +16,9 @@ if ($_SESSION['basket'] && ($data = file_to_data(__DIR__ . PRODUCT))) {
 		if ($data[$k]['quantity'] == 0)
 			continue;
 		$data[$k]['quantity']--;
-		$tmp[$k] = array();
+		if (!isset($tmp[$k])) {
+			$tmp[$k] = array();	
+		}
 		$tmp[$k][0] += $data[$k]['price'];
 		$tmp[$k][1]++;
 	}
@@ -32,5 +34,4 @@ if ($_SESSION['basket'] && ($data = file_to_data(__DIR__ . PRODUCT))) {
 	data_to_file($data, "../private/product");
 }
 header("Location: ../index.php");
-
 ?>

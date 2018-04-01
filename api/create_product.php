@@ -28,8 +28,9 @@ else if ($_POST["name"] && $_POST["price"] && $_POST["quantity"] && $_POST["imag
         $data = file_to_data(__DIR__ . PRODUCT);
         print_r($data);
         header("Location: ../admin.php");
+	    exit ;
     }
-else
+else {
     header("HTTP/1.1 405 Method Not Allowed");
 }
 ?>
