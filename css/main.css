@@ -4,17 +4,18 @@
 }
 
 body {
-  background-color: #27ae60;
+  background-color: #7FBC5E;
 }
 
 .header {
   height: 100px;
 }
 
-.container {
+.main-container {
   background-color: #ecf0f1;
   padding-bottom: 3em;
   overflow: auto;
+  margin-bottom: 3em;
 }
 
 .main-items {
@@ -32,7 +33,11 @@ body {
 
 .footer {
   padding: 1em;
-  background-color: #27ae60;
+  background: #76b852; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+  background: -moz-linear-gradient(right, #76b852, #8DC26F);
+  background: -o-linear-gradient(right, #76b852, #8DC26F);
+  background: linear-gradient(to left, #76b852, #8DC26F);
 }
 
 /* Iframe stuffs */
