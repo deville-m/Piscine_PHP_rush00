@@ -27,7 +27,6 @@ while ($_POST['quantity'] && $data[$_POST['product']]['quantity']) {
 	$_SESSION['total'] += $data[$_POST['product']]['price'];
 	$data[$_POST['product']]['quantity']--;
 }
-data_to_file($data, __DIR__ . PRODUCT);
 header("Location: ../index.php" . $_SESSION['current_page']);
 
 ?>
