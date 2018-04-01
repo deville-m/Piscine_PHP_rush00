@@ -33,7 +33,7 @@
 									<li class=\"list_line\">Panier (0 €)</li>
 								</ul></a>";
 							}
-	            echo "<a class=\"btn\" style=\"float:right\" href=\"/index.php\">".$_SESSION['logged_on_user']."</a>";
+	            echo "<a class=\"btn\" style=\"float:right\" href=\"/user.php\">".$_SESSION['logged_on_user']."</a>";
 	            echo '<a class="btn" style="float:right" href="/api/logout.php">'.'Logout'.'</a>';
 	            break;
 	        case "":
