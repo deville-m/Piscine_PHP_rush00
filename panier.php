@@ -1,7 +1,7 @@
 <?php
 include_once(__DIR__ . "/backend/general.php");
 @session_start();
-if ($_SESSION['group'] == "admin") {
+if ($_SESSION['group'] === "admin") {
 	header("Location: admin.php");
 }
 ?>
