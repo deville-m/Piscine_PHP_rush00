@@ -81,9 +81,25 @@ if ($_SESSION['group'] !== "admin")
 	<div class="rm-box form">
 	  <h2>Supprimer produit</h2>
 	  <form action="api/remove_product.php" method="post" id="rm">
-	  	Produit: <select name="category" form="rmy" required>
+	  	Produit: <select name="product" form="rm" required>
 	    	<?php
 				$list = get_data_key_list(__DIR__ . "/private/product");
+				foreach ($list as $e) {
+		    		echo "<li>".$e."</li>";
+					echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+				}
+			?>
+			</select>
+		<input type="submit" value="OK">
+	  </form>
+	</div>
+
+	<div class="rm-box form">
+	  <h2>Supprimer catégorie</h2>
+	  <form action="api/remove_category.php" method="post" id="rms">
+	  	Catégorie: <select name="category" form="rms" required>
+	    	<?php
+				$list = get_data_key_list(__DIR__ . "/private/category");
 				foreach ($list as $e) {
 		    		echo "<li>".$e."</li>";
 					echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
