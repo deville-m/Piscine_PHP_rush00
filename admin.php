@@ -3,15 +3,15 @@
 <html lang="en">
   <head>
 	<meta charset="utf-8">
-	<title>SilkRoad</title>
-	<meta name="description" content="SilkRoad market">
+	<title>CowShop</title>
+	<meta name="description" content="CowShop">
 	<meta name="author" content="42">
 	<link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
       <header>
-       	<div class="navbar">
-	         <a class="active" href="#">Cow Shop</a>
+       	<div class="navbar" style="z-index: 500;">
+	         <a class="active" href="index.php">Cow Shop</a>
 	         <a href="index.php">Boutique</a>
              <?php
              if (isset($_SESSION)) {
@@ -34,22 +34,26 @@
              ?>
 	       </div>
          </header>
-	<div class="cat-box">
+    <span/>
+	<div style="padding-top: 60px;">
+	<div class="cat-box form">
 	  <h2>Création catégorie</h2>
 	  <form action="api/create_category.php" method="post">
 		Catégorie: <input type="text" name="name" placeholder="Ex: Useless Things">
-		<input type="checkbox" name="visible" value="visibility"> Visible?
+         Visible? <input type="checkbox" name="visible" value="visibility"><br>
 		<input type="submit"><br>
 	  </form>
 	</div>
-	<hr>
-	<div class="mk-box">
+	<div class="mk-box form">
 	  <h2>Création produit</h2>
 	  <form action="api/create_product.php" method="post" id="mk">
 		Nom: <input type="text" name="name" placeholder="Ex: Lasso saucisson"><br>
-		Prix: <input type="number" name="prix" min="0"><br>
+		Prix: <input type="number" name="price" min="0"><br>
+        Quantite: <input type="number" name="quantity" min="0">
+		Visible? <input type="checkbox" name="visible" value="visibility"><br>
 	    <?php
-        echo 'Categorie: <select name="liste" form="mk">';
+        echo 'Categorie:';
+        echo '<br> <select name="liste" form="mk" multiple>';
 		$list = explode(" ", "Liste d'elements dans la categorie a afficher apres requette csv");
 		foreach ($list as $e) {
 		    echo "<li>".$e."</li>";
@@ -60,12 +64,11 @@
 		<input type="submit"><br>
 	  </form>
 	</div>
-	<hr>
-	<div class="rm-box">
+	<div class="rm-box form">
 	  <h2>Supprimer produit</h2>
-	  <form action="api/create_category.php" method="post" id="rm">
+	  <form action="api/remove_category.php" method="post" id="rm">
 	    <?php
-        echo 'Produit: <select name="liste" form="rm">';
+        echo 'Produit: <select name="category" form="rm">';
 		$list = explode(" ", "ceci est une liste de produits a supprimer");
 		foreach ($list as $e) {
 		    echo "<li>".$e."</li>";
@@ -76,8 +79,7 @@
 		<input type="submit">
 	  </form>
 	</div>
-	<hr>
-	<div class="viz-box">
+	<div class="viz-box form">
 	  <h2>Rendre Visible</h2>
 	  <form action="api/make_visible.php" method="post" id="viz">
         <?php
@@ -99,8 +101,7 @@
 	  <input type="submit">
 	  </form>
 	</div>
-	<hr>
-	<div class="man-box">
+	<div class="man-box form">
       <h2>Gestion Utilisateurs</h2>
 	  <form action="api/user_manage.php" method="post" id="manage">
 		<?php
