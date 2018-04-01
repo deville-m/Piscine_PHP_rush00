@@ -30,9 +30,23 @@ if ($_SESSION['group'] === "admin") {
 					<li class="list_line">
 						<input type="password" name="new_password" placeholder="Nouveau mot de passe"required>
 					</li>
+					<li>
+						<input class="over-pointer valid_btn" type="submit" name="submit" value="Update Informations">
+					</li>
 				</ul>
-				<br>
-				<input type="submit" name="submit" value="update informations">
+			</form>
+			<form action="api/user_manage.php" method="post" id="manage">
+				Supprimer compte: <select name="liste" form="manage" required>
+				<?php
+				$list = get_data_key_list(__DIR__ . "/private/passwd");
+				foreach ($list as $e) {
+					if ($e == "root") continue;
+					echo "<li>".$e."</li>";
+					echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+				}
+				?>
+				</select>
+				<input type="submit" name="submit" value="OK">
 			</form>
 		</div>
 	</body>
