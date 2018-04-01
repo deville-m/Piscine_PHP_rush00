@@ -6,19 +6,22 @@
 	  <a class="active" href="index.php">
 			<ul class="ul_line">
 				<li class="list_line"><img id="logo" src=/img/logo.svg></li>
-				<li class="list_line">Cow Shop</li>
+				<li class="list_line" id="brand">Cow Shop</li>
 			</ul>
 		</a>
 	    <?php
 	    if (isset($_SESSION)) {
 	        switch ($_SESSION['group']) {
 	        case "admin":
-	            echo '<a style="float:right" href="admin.php">'."Administrator".'</a>';
+	            echo '<a class="btn" style="float:right" href="admin.php">'."Administrator".'</a>';
 	            echo '<a class="btn" style="float:right" href="api/logout.php">'.'Logout'.'</a>';
 	            break;
 	        case "client":
-	            echo '<a class="btn" style="float:right" href="panier.php">Panier ('."12".'€)</a>';
-	            echo '<a class="btn" style="float:right" href="index.php">'.$_SESSION['logged_on_user'].'</a>';
+							if ($_SESSION['total'])
+	            	echo "<a class=\"btn\" style=\"float:right\" href=\"panier.php\">Panier (".$_SESSION['total']." €)</a>";
+							else
+			        	echo "<a class=\"btn\" style=\"float:right\" href=\"panier.php\">Panier (0 €)</a>";
+	            echo "<a class=\"btn\" style=\"float:right\" href=\"index.php\">".$_SESSION['logged_on_user']."</a>";
 	            echo '<a class="btn" style="float:right" href="api/logout.php">'.'Logout'.'</a>';
 	            break;
 	        case "":

@@ -13,11 +13,12 @@ if ($_SESSION['group'] == "admin") {
 		<meta name="description" content="CowShop">
 		<meta name="author" content="42">
 		<link rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
 		<div class="header">
 			<?php include("./header.php"); ?>
-		</div>		
+		</div>
 		<div class="man-box form">
 			<?php
 			$product = file_to_data(__DIR__ . "/private/product");
