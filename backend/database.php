@@ -55,7 +55,7 @@ function remove_product($name) {
 function add_product_to_category($category_name, $product_name) {
     if (!$category_name || !$product_name)
         return FALSE;
-    if (($data = file_to_data(__DIR__ . CATEGORY)) === FALSE)
+    if (($data = file_to_data(__DIR__ . CATEGORY)) === FALSE || !isset($data[$category_name]))
         return FALSE;
     array_push($data[$category_name], $product_name);
     if (data_to_file($data, __DIR__ . CATEGORY) === FALSE)
@@ -63,7 +63,7 @@ function add_product_to_category($category_name, $product_name) {
     return TRUE;
 }
 
-function add_category($name, $visible) {
+function add_category($name, $image, $visible) {
     if (!$name)
         return FALSE;
     if (($data = file_to_data(__DIR__ . CATEGORY)) === FALSE)
@@ -71,6 +71,7 @@ function add_category($name, $visible) {
     if (isset($data[$name]))
         return FALSE;
     $data[$name] = array();
+    $data[$name]['image'] = $image;
     $data[$name]['visible'] = $visible;
     if (data_to_file($data, __DIR__ . CATEGORY) === FALSE)
         return FALSE;
