@@ -23,10 +23,10 @@
 				$_SESSION['error'] = "";
 				?>
 				<form class="login-form" method="post" action="api/login.php">
-					<input type="text" placeholder="username" name="username" id="username" required/>
-					<input type="password" placeholder="password" name="password" id="password" required/>
+					<input type="text" placeholder="Login" name="username" id="username" required/>
+					<input type="password" placeholder="Password" name="password" id="password" required/>
 					<button>login</button>
-					<p class="message">Pas enregistré? <a href="register.php">Creer un compte</a></p>
+					<p class="message">Not Registered? <a href="register.php">Create an Account</a></p>
 				</form>
 			</div>
 		</div>
