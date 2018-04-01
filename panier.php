@@ -1,11 +1,9 @@
 <?php
-
 include_once(__DIR__ . "/backend/general.php");
-
 @session_start();
-if ($_SESSION['group'] !== "admin")
-	header("Location: ../index.php");
-
+if ($_SESSION['group'] == "admin") {
+	header("Location: admin.php");
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,5 +20,14 @@ if ($_SESSION['group'] !== "admin")
 		</div>		
 		<span/>
 		<div style="padding-top: 60px;"/>
+		<div class="man-box form">
+			<?php
+			echo '<h2> Panier </h2>';
+			echo '<hr>';
+			echo 'Votre panier est vide';
+			echo '<hr>';
+			echo 'Total: 0€';
+			?>
+		</div>
 	</body>
 </html>
