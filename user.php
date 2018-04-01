@@ -35,18 +35,8 @@ if ($_SESSION['group'] === "admin") {
 					</li>
 				</ul>
 			</form>
-			<form action="api/user_manage.php" method="post" id="manage">
-				Supprimer compte: <select name="liste" form="manage" required>
-				<?php
-				$list = get_data_key_list(__DIR__ . "/private/passwd");
-				foreach ($list as $e) {
-					if ($e == "root") continue;
-					echo "<li>".$e."</li>";
-					echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-				}
-				?>
-				</select>
-				<input type="submit" name="submit" value="OK">
+			<form action="api/delete_own_account.php" method="post">
+				<input class="over-pointer clear_btn" type="submit" name="submit" value="Delete My Account">
 			</form>
 		</div>
 	</body>
