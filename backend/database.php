@@ -2,7 +2,7 @@
 
 include_once(__DIR__ . "/general.php");
 
-function add_product($name, $price, $quantity, $image, $visible)
+function add_product($name, $price, $quantity, $image, $visible, $overwrite)
 {
 	foreach (func_get_args() as $k)
 	{
@@ -11,7 +11,7 @@ function add_product($name, $price, $quantity, $image, $visible)
     }
     if (($products = file_to_data(__DIR__ . PRODUCT)) === FALSE)
 		return false;
-    if ($products[$product_id] != NULL) {
+    if (!$overwrite && $products[$product_id] != NULL) {
         return false;
 	}
 

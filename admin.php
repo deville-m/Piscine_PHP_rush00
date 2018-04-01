@@ -40,16 +40,12 @@ if ($_SESSION['group'] !== "admin")
 					Image: <input type="url" name="image" placeholder="Ex: https://google.com/image/..."required>
 					Visible? <input type="checkbox" name="visible" value="visibility"><br>
 					Mise a Jour <input type="checkbox" name="maj" value="maj"><br>
-					Catégorie: <br>
-					<select name="liste" form="mk" multiple required>
-						<?php
-						$list = get_data_key_list(__DIR__ . "/private/category");
-						foreach ($list as $e) {
-							echo "<li>".$e."</li>";
-							echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-						}
-						?>
-					</select>
+					<?php
+					$list = get_data_key_list(__DIR__ . "/private/category");
+					foreach ($list as $key) {
+						echo $key . ' <input type="checkbox" name="' . $key . '" value="maj"><br>';
+					}
+					?>
 					<input type="submit" name="submit" value="OK"><br>
 				</form>
 			</div>
