@@ -39,40 +39,9 @@ if ($_SESSION['group'] !== "admin")
 					Quantite: <input type="number" name="quantity" min="0"required>
 					Image: <input type="url" name="image" placeholder="Ex: https://google.com/image/..."required>
 					Visible? <input type="checkbox" name="visible" value="visibility"><br>
+					Mise a Jour <input type="checkbox" name="maj" value="maj"><br>
 					Catégorie: <br>
 					<select name="liste" form="mk" multiple required>
-						<?php
-						$list = get_data_key_list(__DIR__ . "/private/category");
-						foreach ($list as $e) {
-							echo "<li>".$e."</li>";
-							echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-						}
-						?>
-					</select>
-					<input type="submit" name="submit" value="OK"><br>
-				</form>
-			</div>
-
-			<div class="mk-box form">
-				<h2>Update produit</h2>
-				<form action="api/update_product.php" method="put" id="update">
-					Produit a modifier: <select name="product" form="update" required>
-					<?php
-					$list = get_data_key_list(__DIR__ . "/private/product");
-					foreach ($list as $e) {
-						echo "<li>".$e."</li>";
-						echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-					}
-					?>
-					</select>
-
-					Nouveau Nom: <input type="text" name="name" placeholder="Ex: Lasso saucisson"required><br>
-					Nouveau Prix: <input type="number" name="price" min="0"required><br>
-					Nouvelle Quantite: <input type="number" name="quantity" min="0"required>
-					Nouvelle Image: <input type="url" name="image" placeholder="Ex: https://google.com/image/..."required>
-					Visible? <input type="checkbox" name="visible" value="visibility"><br>
-					Catégorie: <br>
-					<select name="liste" form="update" multiple required>
 						<?php
 						$list = get_data_key_list(__DIR__ . "/private/category");
 						foreach ($list as $e) {
