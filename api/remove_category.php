@@ -1,10 +1,9 @@
 <?php
 
-/*
- * @author ctrouill
- * @docs delete kateg0r13s
- */
-if ($_SESSION['group'] != "admin") {
+include(__DIR__ . "/../backend/database.php");
+@session_start();
+
+if ($_SESSION['group'] !== "admin") {
     header("HTTP/1.1 401 Unauthorized");
     header("Location: ../index.php");
     exit;
