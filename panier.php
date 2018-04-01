@@ -19,7 +19,7 @@ if ($_SESSION['group'] == "admin") {
 		<div class="header">
 			<?php include("./header.php"); ?>
 		</div>
-		<div class="man-box form">
+		<div class="man-box center-box">
 			<?php
 			$product = file_to_data(__DIR__ . "/private/product");
 			/* print_r($product); */

@@ -23,7 +23,7 @@ if ($_SESSION['group'] !== "admin")
 		</div>
 		<span/>
 		<div style="padding-top: 60px;"/>
-			<div class="cat-box form">
+			<div class="cat-box center-box">
 				<h2>Création catégorie</h2>
 				<form action="api/create_category.php" method="post">
 					Catégorie: <input type="text" name="name" placeholder="Ex: Useless Things"required>
@@ -50,7 +50,7 @@ if ($_SESSION['group'] !== "admin")
 				</form>
 			</div>
 
-			<div class="rm-box form">
+			<div class="rm-box center-box">
 				<h2>Supprimer produit</h2>
 				<form action="api/remove_product.php" method="post" id="rm">
 					Produit: <select name="product" form="rm" required>
@@ -101,7 +101,7 @@ if ($_SESSION['group'] !== "admin")
 				</form>
 			</div>
 
-			<div class="man-box form">
+			<div class="man-box center-box">
 				<h2>Gestion Utilisateurs</h2>
 				<form action="api/user_manage.php" method="post" id="manage">
 					Supprimer compte: <select name="liste" form="manage" required>
