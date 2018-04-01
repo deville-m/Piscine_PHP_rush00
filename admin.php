@@ -50,7 +50,8 @@ if ($_SESSION['group'] !== "admin")
 	  <h2>Création catégorie</h2>
 	  <form action="api/create_category.php" method="post">
 		Catégorie: <input type="text" name="name" placeholder="Ex: Useless Things">
-         Visible? <input type="checkbox" name="visible" value="visibility"><br>
+		Image: <input type="number" name="image" placeholder="Ex: https://google.com/image/...">
+        Visible? <input type="checkbox" name="visible" value="visibility"><br>
 		<input type="submit" value="OK"><br>
 	  </form>
 	</div>
@@ -62,6 +63,7 @@ if ($_SESSION['group'] !== "admin")
 		Nom: <input type="text" name="name" placeholder="Ex: Lasso saucisson"><br>
 		Prix: <input type="number" name="price" min="0"><br>
         Quantite: <input type="number" name="quantity" min="0">
+        Image: <input type="number" name="image" placeholder="Ex: https://google.com/image/...">
 		Visible? <input type="checkbox" name="visible" value="visibility"><br>
 		Catégorie: <br>
 			<select name="liste" form="mk" multiple>
