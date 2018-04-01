@@ -1,6 +1,7 @@
 #! /usr/bin/php
 <?php
 
+
 /*function set_macros($macro_name, $content)
 {
 	return "define('".$macro_name."', '".$content."');\n";
@@ -43,5 +44,7 @@ if (@file_put_contents("private/env.php", $php_open.$macro.$php_close) === FALSE
 	exit ("FATAL ERROR: could not write env file");*/
 
 echo "Initialization OK\n";
+include __DIR__."/backend/create_category.php";
+include __DIR__."/backend/create_product.php";
 
 ?>
