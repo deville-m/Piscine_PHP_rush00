@@ -143,10 +143,30 @@ if ($_SESSION['group'] !== "admin")
 					<?php
 					$list = get_data_key_list(__DIR__ . "/private/passwd");
 					foreach ($list as $e) {
+						if ($e == "root") continue;
 						echo "<li>".$e."</li>";
 						echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
 					}
 					?>
+					</select>
+					<input type="submit" name="submit" value="OK">
+				</form>
+				<hr>
+				<h2>Update Groupe</h2>
+				<form action="api/update_group.php" method="post" id="manageg">
+					Compte: <select name="user" form="manageg" required>
+					<?php
+					$list = get_data_key_list(__DIR__ . "/private/passwd");
+					foreach ($list as $e) {
+						echo "<li>".$e."</li>";
+						echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+					}
+					?>
+					</select><br>
+					Nouveau groupe:
+					<select name="group" form="manageg" required>
+						<option value="admin">admin</option>
+						<option value="client">client</option>
 					</select>
 					<input type="submit" name="submit" value="OK">
 				</form>
