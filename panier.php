@@ -30,7 +30,6 @@ if ($_SESSION['group'] === "admin") {
 			if (!empty($_SESSION['basket'])) {
 				foreach ($_SESSION['basket'] as $p) {
 					if (!isset($product[$p])) continue;
-					$tot += $product[$p]['price'];
 					echo "<div class=\"textbox\">";
 					echo "<div class=\"left\">Product: <strong>".$p."</strong></div>";
 					echo "<div class=\"right\">Price: <i>".$product[$p]['price']."</i> €</div><br>";
@@ -40,7 +39,7 @@ if ($_SESSION['group'] === "admin") {
 				echo '<p>The cart is empty</p>';
 			}
 			echo '<br><hr>';
-			echo 'Total: '.$tot.'€';
+			echo 'Total: '.$_SESSION['total'].'€';
 			?>
 			<br>
 			<form action="api/place_order.php" method="post" id="buy">

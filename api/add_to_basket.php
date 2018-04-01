@@ -7,7 +7,8 @@ if (!isset($_SESSION) || !isset($_POST['quantity']) || !isset($_POST['product'])
 	header("Location: ../index.php");
 	exit();
 }
-if (!isset($_SESSION['basket'])) {
+
+if (!isset($_SESSION['basket']) || !isset($_SESSION['total'])) {
 	$_SESSION['total'] = 0;
 	$_SESSION['basket'] = array();
 }
@@ -23,6 +24,7 @@ if (!isset($data[$_POST['product']])) {
 while ($_POST['quantity'] && $data[$_POST['product']]['quantity']) {
 	array_push ($_SESSION['basket'], $_POST['product']);
 	$_POST['quantity']--;
+	$_SESSION['total'] += $data[$_POST['product']]['price'];
 	$data[$_POST['product']]['quantity']--;
 }
 data_to_file($data, __DIR__ . PRODUCT);
