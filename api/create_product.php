@@ -19,14 +19,12 @@ else if ($_POST["name"] && $_POST["price"] && $_POST["quantity"] && $_POST["imag
             exit;
         }
         $list = get_data_key_list(__DIR__ . CATEGORY);
-        print_r($list);
         foreach ($list as $kat) {
             if (isset($_POST[$kat])) {
                 add_product_to_category($kat, $_POST['name']);
             }
         }
         $data = file_to_data(__DIR__ . PRODUCT);
-        print_r($data);
         header("Location: ../admin.php");
 	    exit ;
     }
