@@ -2,16 +2,6 @@
 
 include(__DIR__ . "/general.php");
 
-/*
- * @author ctrouill
- * @docs add product to serialized file database
- * @params product_id id of the product to store
- * @params name product name to store
- * @params quantity of product to store
- * @params image relative path to the assets folder of product
- * @params visible boolean
- * return boolean of compution success
- */
 function add_product($name, $price, $quantity, $image, $visible)
 {
 	foreach (func_get_args() as $k)
@@ -35,12 +25,6 @@ function add_product($name, $price, $quantity, $image, $visible)
     return true;
 }
 
-/*
- * @author ctrouill
- * @docs remove products
- * @params product_id id to remove
- * @return boolean of computation success
- */
 function remove_product($name) {
     if (!$product_id)
         return false;
