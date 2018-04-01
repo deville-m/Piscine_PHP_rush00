@@ -16,7 +16,9 @@ if ($_SESSION['basket'] && ($data = file_to_data(__DIR__ . PRODUCT))) {
 		if ($data[$k]['quantity'] == 0)
 			continue;
 		$data[$k]['quantity']--;
-		$tmp[$k] = $data[$k]['price'];
+		$tmp[$k] = array();
+		$tmp[$k][0] += $data[$k]['price'];
+		$tmp[$k][1]++;
 	}
 	$_SESSION['basket'] = array();
 	$_SESSION['total'] = 0;
