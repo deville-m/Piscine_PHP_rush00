@@ -170,8 +170,8 @@ if ($_SESSION['group'] !== "admin")
 					$tot += $pp[0];
 					echo "<li>".$x." x".$pp[1]."for ".$pp[0]."€</li>";
 				}
-				echo "</ul>"
-				echo "<p>Total: ".$tot."</p>"
+				echo "</ul>";
+				echo "<p>Total: ".$tot."</p>";
 				echo "</div>";
 				echo "<hr>";
 			}
