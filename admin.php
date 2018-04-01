@@ -51,7 +51,7 @@ if ($_SESSION['group'] !== "admin")
 		Catégorie: <input type="text" name="name" placeholder="Ex: Useless Things"required>
 		Image: <input type="url" name="image" placeholder="Ex: https://google.com/image/..."required>
         Visible? <input type="checkbox" name="visible" value="visibility"><br>
-		<input type="submit" value="OK"><br>
+		<input type="submit" name="submit" value="OK"><br>
 	  </form>
 	</div>
 
@@ -74,7 +74,7 @@ if ($_SESSION['group'] !== "admin")
 				}
 			?>
 			</select>
-		<input type="submit" value="OK"><br>
+		<input type="submit" name="submit" value="OK"><br>
 	  </form>
 	</div>
 
@@ -90,7 +90,7 @@ if ($_SESSION['group'] !== "admin")
 				}
 			?>
 			</select>
-		<input type="submit" value="OK">
+		<input type="submit" name="submit" value="OK">
 	  </form>
 	</div>
 
@@ -106,7 +106,7 @@ if ($_SESSION['group'] !== "admin")
 				}
 			?>
 			</select>
-		<input type="submit" value="OK">
+		<input type="submit" name="submit" value="OK">
 	  </form>
 	</div>
 
@@ -129,7 +129,7 @@ if ($_SESSION['group'] !== "admin")
 	        }
 		?>
 		</select><br>
-	  <input type="submit" value="OK">
+	  <input type="submit" name="submit" value="OK">
 	  </form>
 	</div>
 
@@ -145,7 +145,7 @@ if ($_SESSION['group'] !== "admin")
 			}
 		?>
 		</select>
-	  <input type="submit" value="OK">
+	  <input type="submit" name="submit" value="OK">
 	  </form>
 	</div>
   </body>

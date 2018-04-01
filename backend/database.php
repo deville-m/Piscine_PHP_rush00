@@ -26,11 +26,11 @@ function add_product($name, $price, $quantity, $image, $visible)
 }
 
 function remove_product($name) {
-    if (!$product_id)
+    if (!$name)
         return false;
-    if (($products = file_to_data(__DIR__ . PRODUCT)) === FALSE)
+    if (($data = file_to_data(__DIR__ . PRODUCT)) === FALSE)
         return false;
-    unset($products[$name]);
+    unset($data[$name]);
     if (data_to_file($data, __DIR__ . PRODUCT) === FALSE)
         return false;
     return true;
