@@ -2,6 +2,7 @@
 
 @session_start();
 
+include (__DIR__ . "/../backend/general.php");
 include (__DIR__ . "/../backend/database.php");
 
 if ($_SESSION['group'] !== "admin") {
@@ -14,16 +15,18 @@ if ($_POST['submit'] !== "OK" || !$_POST['product']) {
 	header("Location: ../admin.php");
 	exit();
 }
-if (($category = file_to_data(__DIR__ . CATEGORY)) === FALSE)
+if (($data = file_to_data(__DIR__ . CATEGORY)) === FALSE)
 	exit();
 
-for ($i = 0; $i < count($category); $i++) {
-	for ($j = 0; $j < count($category[$i]['product']); $j++) {
-        if ($category[$i]['product'][$j] === $_POST['product'] && isset($category[$i]['product'][$j])) {
-            unset($category[$i]['product'][$j]);
-        }
+foreach ($data as $key => $value) {
+	for ($j = 0; $j < count($data[$key]['product']); $j++) {
+		if ($data[$key]['product'][$j] === $_POST['product'])
+			unset($data[$key]['product'][$j]);
 	}
+	$data[$key]['product'] = array_values($data[$key]['product']);
 }
+if (data_to_file($data, __DIR__ . CATEGORY) === FALSE)
+	exit();
 
 remove_product($_POST['product']);
 header("Location: ../admin.php");
