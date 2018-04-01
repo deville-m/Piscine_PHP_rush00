@@ -23,7 +23,8 @@ if ($type === "category")
 			"\" /><br>".
 			"<p>".
 			$key.
-			"</p></li></a>";
+			"</p>
+			</li></a>";
 	}
 
 }
@@ -45,26 +46,30 @@ else if ($type === "product")
 			echo "<li class=\"tiles\"
 				id=\"".$type."_".$key."\"
 				>";
-			echo_buy();
+			echo_buy($key);
 			echo "<img src=\"".
 				$item["image"].
 				"\" /><br>".
 				"<p>".
 				$key.
-				"</p></li></a>";
+				"</p>
+				<p>".$item['price']."€</p>
+				</li></a>";
 		}
 		else if (in_array($key, $cat_prod))
 		{
 			echo "<li class=\"tiles\"
 				id=\"".$type."_".$key."\"
 				>";
-			echo_buy();
+			echo_buy($key);
 			echo "<img src=\"".
 				$item["image"].
 				"\" /><br>".
 				"<p>".
 				$key.
-				"</p></li>";
+				"</p>
+				<p>".$item['price']."€</p>
+				</li>";
 		}
 	}
 }

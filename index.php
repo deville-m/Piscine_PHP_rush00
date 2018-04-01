@@ -76,6 +76,14 @@
         include ("./backend/templates/list_of_categories.php");
 		    echo "</ul>";
     }
+		else
+		{
+			echo "<h2>".$_GET['id']." Cows</h2>";
+			echo "<ul class=\"menu-ul\">";
+			$type = "product";
+			include ("./backend/templates/list_of_categories.php");
+			echo "</ul>";
+		}
     ?>
 	</div>
 	<div class="main-container">
