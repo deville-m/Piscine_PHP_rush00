@@ -1,6 +1,7 @@
 <?php @session_start();
 
 	include_once ("./backend/general.php");
+/*	include_once ("./backend/visibility.php");*/
 
   if ($_GET)
   {
@@ -10,12 +11,12 @@
 			if (($tmp = file_to_data("./private/category")) === false)
 			{
 				header("Location: /index.php");
-				exit ("TO\n");
+				exit ;
 			}
 			$cat_list = array();
 			foreach ($tmp as $key => $value)
 				$cat_list[] = $key;
-			if (!in_array($_GET['id'], $cat_list))
+			if (!in_array($_GET['id'], $cat_list) || !$tmp[$_GET['id']]['visible'])
 			{
 				header("Location: /index.php");
 				exit ;
@@ -92,8 +93,8 @@
 			{
 				echo "<h1>Select a Classy Cow Class (CCC)</h1>";
 				echo "<ul class=\"tile-mosaic\">";
-  			$type = "category";
-  			include ("./backend/templates/display_tiles.php");
+  				$type = "category";
+  				include ("./backend/templates/display_tiles.php");
 			}
 			else
 			{

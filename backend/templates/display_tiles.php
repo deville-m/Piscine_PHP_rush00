@@ -15,7 +15,9 @@ if ($type === "category")
 		return false;
 	foreach ($list as $key => $item)
 	{
-		echo "<a href=\"/index.php?type=".$type."&id=".$key."\"><li class=\"tiles\"
+		if ($item['visible'])
+		{
+			echo "<a href=\"/index.php?type=".$type."&id=".$key."\"><li class=\"tiles\"
 			id=\"".$type."_".$key."\"
 			>".
 			"<img src=\"".
@@ -25,6 +27,7 @@ if ($type === "category")
 			$key.
 			"</p>
 			</li></a>";
+		}
 	}
 
 }
@@ -41,7 +44,7 @@ else if ($type === "product")
 		return false;
 	foreach ($list as $key => $item)
 	{
-		if (!$id)
+		if (!$id && $item['quantity'] && $item['visible'])
 		{
 			echo "<li class=\"tiles\"
 				id=\"".$type."_".$key."\"
@@ -56,7 +59,7 @@ else if ($type === "product")
 				<p>".$item['price']."€</p>
 				</li></a>";
 		}
-		else if (in_array($key, $cat_prod))
+		else if (in_array($key, $cat_prod) && $item['quantity'] && $item['visible'])
 		{
 			echo "<li class=\"tiles\"
 				id=\"".$type."_".$key."\"

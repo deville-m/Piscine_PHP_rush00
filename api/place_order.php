@@ -10,13 +10,17 @@ if (!$_SESSION['logged_on_user']) {
 
 if ($_SESSION['basket'] && ($data = file_to_data(__DIR__ . PRODUCT))) {
 	$tmp = array();
-	$tmp[0] = $_SESSION['logged_on_user'];
-	$tmp[1] = time();
+	$tmp["user"] = $_SESSION['logged_on_user'];
+	$tmp["timestamp"] = time();
 	foreach ($_SESSION['basket'] as $k) {
 		if ($data[$k]['quantity'] == 0)
 			continue;
 		$data[$k]['quantity']--;
-		array_push($tmp, $k);
+		if (!isset($tmp[$k])) {
+			$tmp[$k] = array();	
+		}
+		$tmp[$k][0] += $data[$k]['price'];
+		$tmp[$k][1]++;
 	}
 	$_SESSION['basket'] = array();
 	$_SESSION['total'] = 0;
@@ -30,5 +34,4 @@ if ($_SESSION['basket'] && ($data = file_to_data(__DIR__ . PRODUCT))) {
 	data_to_file($data, "../private/product");
 }
 header("Location: ../index.php");
-
 ?>
