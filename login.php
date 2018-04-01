@@ -17,6 +17,9 @@
 		<div class="login-page">
 			<div class="form">
 				<h1>Login</h1>
+				<p>Hello there.</p>
+				<p>It's really nice to see you again!</p>
+				<br>
 				<?php
 				if ($_SESSION['error'])
 					echo "<p>" . $_SESSION['error'] . "</p>\n";
