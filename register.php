@@ -4,15 +4,15 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/styles.css"/>
 		<link rel="stylesheet" href="./css/main.css">
 	</head>
 	<body>
-		<header>
-			<div class="navbar">
-				<a class="active" href="index.php">Cow Shop</a>
-			</div>
-		</header>
+		<div class="header">
+			<?php
+			  include("./header.php");
+			?>
+		</div>
 		<div class="login-page">
 			<div class="form">
 				<h1>Register</h1>
