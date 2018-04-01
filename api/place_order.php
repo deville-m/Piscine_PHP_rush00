@@ -27,6 +27,7 @@ if ($_SESSION['basket'] && ($data = file_to_data(__DIR__ . PRODUCT))) {
 	}
 	array_push($orders, $tmp);
 	data_to_file($orders, "../private/order");
+	data_to_file($data, "../private/product");
 }
 header("Location: ../index.php");
 
