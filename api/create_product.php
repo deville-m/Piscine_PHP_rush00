@@ -16,8 +16,16 @@ if ($_SESSION['group'] != "admin") {
     if ($_POST["name"]
         && $_POST["price"]
         && $_POST["quantity"]
-        && $_POST["list"]) {
-        if (isset($_POST['visibility'])) {} else {}
+        && $_POST["image"]) {
+        // && $_POST["list"]) {
+        if (isset($_POST['visibility'])) {
+            add_product($_POST["name"], $_POST["price"], $_POST["quantity"], $_POST["image"], true);
+        } else {
+            add_product($_POST["name"], $_POST["price"], $_POST["quantity"], $_POST["image"], true);
+        }
+        foreach ($_POST['list'] as $kat) {
+            add_product_to_category($kat, $_POST['name']);
+        }
         header("Location: ../admin.php");
         exit;
     }
