@@ -20,6 +20,7 @@
 
 			if ($_SESSION['error'])
 				echo "<p>" . $_SESSION['error'] . "</p>\n";
+			$_SESSION['error'] = "";
 
 		?>
 		<form class="login-form" method="post" action="api/register.php">

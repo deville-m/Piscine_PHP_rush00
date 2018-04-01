@@ -20,6 +20,7 @@
 		<?php
 			if ($_SESSION['error'])
 				echo "<p>" . $_SESSION['error'] . "</p>\n";
+			$_SESSION['error'] = "";
 		?>
 		<form class="login-form" method="post" action="api/login.php">
 			<input type="text" playceholder="username" name="username" id="username" required/>

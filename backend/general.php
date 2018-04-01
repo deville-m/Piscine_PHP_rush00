@@ -24,4 +24,14 @@ function data_to_file($data, $file) {
 	return TRUE;
 }
 
+function get_data_key_list($file) {
+    $res = array();
+    if (($data = file_to_data($file)) == FALSE)
+        return FALSE;
+    foreach ($data as $key => $value) {
+        array_push($res, $key);
+    }
+    return ($res);
+}
+
 ?>

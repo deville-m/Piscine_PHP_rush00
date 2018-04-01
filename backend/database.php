@@ -1,6 +1,6 @@
 <?php
 
-include("general.php");
+include(__DIR__ . "/general.php");
 
 /*
  * @author ctrouill
@@ -12,31 +12,25 @@ include("general.php");
  * @params visible boolean
  * return boolean of compution success
  */
-function add_product($product_id, $name,
-                     $price, $quantity,
-					 $image, $visible)
+function add_product($name, $price, $quantity, $image, $visible)
 {
 	foreach (func_get_args() as $k)
 	{
 		if (!$k || $k === "")
 			return false;
     }
-    if (($products = file_to_data(__DIR__."/../private/product")) === FALSE)
+    if (($products = file_to_data(__DIR__ . PRODUCT)) === FALSE)
 		return false;
-	echo "ERROR1\n";
     if ($products[$product_id] != NULL) {
         return false;
 	}
 
-	print_r($products);
-
-    $products[$product_id] = array();
-    $products[$product_id]['name'] = $name;
-    $products[$product_id]['price'] = $price;
-    $products[$product_id]['quantity'] = $quantity;
-    $products[$product_id]['image'] = $image;
-    $products[$product_id]['visible'] = $visible;
-    if (!data_to_file($products, __DIR__."/../private/product"))
+    $products[$name] = array();
+    $products[$name]['price'] = $price;
+    $products[$name]['quantity'] = $quantity;
+    $products[$name]['image'] = $image;
+    $products[$name]['visible'] = $visible;
+    if (!data_to_file($products, __DIR__ . PRODUCT))
         return false;
     return true;
 }
@@ -47,14 +41,40 @@ function add_product($product_id, $name,
  * @params product_id id to remove
  * @return boolean of computation success
  */
-function remove_product($product_id) {
+function remove_product($name) {
     if (!$product_id)
         return false;
-    if (($products = data_to_file(__DIR__."/../private/product")) === FALSE)
+    if (($products = file_to_data(__DIR__ . PRODUCT)) === FALSE)
         return false;
-    unset($products[$product_id]);
-    if (!data_to_file(__DIR__."/../private/product"))
+    unset($products[$name]);
+    if (data_to_file($data, __DIR__ . PRODUCT) === FALSE)
         return false;
     return true;
 }
+
+function add_category($name, $visible) {
+    if (!$name)
+        return FALSE;
+    if (($products = file_to_data(__DIR__ . CATEGORY)) === FALSE)
+        return FALSE;
+    if (isset($data[$name]))
+        return FALSE;
+    $data[$name] = array();
+    $data[$name]['visible'] = $visible;
+    if (data_to_file($data, __DIR__ . CATEGORY)) === FALSE)
+        return FALSE;
+    return TRUE;
+}
+
+function remove_category($name) {
+    if (!$name)
+        return FALSE;
+    if (($products = file_to_data(__DIR__ . CATEGORY)) === FALSE)
+        return FALSE;
+    unset($data[$name]);
+    if (data_to_file($data, __DIR__ . CATEGORY)) === FALSE)
+        return FALSE;
+    return TRUE;
+}
+
 ?>

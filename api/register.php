@@ -4,6 +4,8 @@ include(__DIR__ . "/../backend/user.php");
 
 @session_start();
 
+$_SESSION['error'];
+
 if (!isset($_POST) || !isset($_SESSION)) {
 	header("Location: ../register.php");
 	$_SESSION['error'] = "Not in valid sesssion\n";
