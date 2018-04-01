@@ -52,10 +52,21 @@ function remove_product($name) {
     return true;
 }
 
+function add_product_to_category($category_name, $product_name) {
+    if (!$category_name || !$product_name)
+        return FALSE;
+    if (($data = file_to_data(__DIR__ . CATEGORY)) === FALSE)
+        return FALSE;
+    array_push($data[$category_name], $product_name);
+    if (data_to_file($data, __DIR__ . CATEGORY) === FALSE)
+        return FALSE;
+    return TRUE;
+}
+
 function add_category($name, $visible) {
     if (!$name)
         return FALSE;
-    if (($products = file_to_data(__DIR__ . CATEGORY)) === FALSE)
+    if (($data = file_to_data(__DIR__ . CATEGORY)) === FALSE)
         return FALSE;
     if (isset($data[$name]))
         return FALSE;
