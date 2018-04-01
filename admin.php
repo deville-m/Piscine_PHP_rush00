@@ -21,8 +21,7 @@ if ($_SESSION['group'] !== "admin")
 			<?php include("./header.php"); ?>
 		</div>		
 		<span/>
-		<div style="padding-top: 60px;">
-
+		<div style="padding-top: 60px;"/>
 			<div class="cat-box form">
 				<h2>Création catégorie</h2>
 				<form action="api/create_category.php" method="post">
