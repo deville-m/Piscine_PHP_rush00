@@ -15,7 +15,9 @@
 		</div>
 		<div class="login-page">
 			<div class="form">
-				<h1>Register</h1>
+				<h1>Create an Account</h1>
+				<p>You are so welcome!</p>
+				<br>
 				<?php
 
 				if ($_SESSION['error'])
@@ -24,10 +26,10 @@
 
 				?>
 				<form class="login-form" method="post" action="api/register.php">
-					<input type="text" placeholder="username" name="username" id="username" required/>
-					<input type="password" placeholder="password" name="password" id="password" required/>
+					<input type="text" placeholder="Login" name="username" id="username" required/>
+					<input type="password" placeholder="Password" name="password" id="password" required/>
 					<button>register</button>
-					<p class="message">Déjà enregistré? <a href="login.php">Connectez vous</a></p>
+					<p class="message">Already Registered? <a href="login.php">Log In!</a></p>
 				</form>
 			</div>
 		</div>

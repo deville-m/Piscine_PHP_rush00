@@ -30,9 +30,13 @@ if ($_SESSION['group'] === "admin") {
 					<li class="list_line">
 						<input type="password" name="new_password" placeholder="Nouveau mot de passe"required>
 					</li>
+					<li>
+						<input class="over-pointer valid_btn" type="submit" name="submit" value="Update Informations">
+					</li>
 				</ul>
-				<br>
-				<input type="submit" name="submit" value="update informations">
+			</form>
+			<form action="api/delete_own_account.php" method="post">
+				<input class="over-pointer clear_btn" type="submit" name="submit" value="Delete My Account">
 			</form>
 		</div>
 	</body>
