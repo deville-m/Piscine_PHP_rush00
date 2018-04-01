@@ -12,15 +12,16 @@ if ($_SESSION['basket'] && ($data = file_to_data(__DIR__ . PRODUCT))) {
 	$tmp = array();
 	$tmp["user"] = $_SESSION['logged_on_user'];
 	$tmp["timestamp"] = time();
+	$tmp['products'] = array();
 	foreach ($_SESSION['basket'] as $k) {
 		if ($data[$k]['quantity'] == 0)
 			continue;
 		$data[$k]['quantity']--;
-		if (!isset($tmp[$k])) {
-			$tmp[$k] = array();	
+		if (!isset($tmp['products'][$k])) {
+			$tmp['products'][$k] = array();	
 		}
-		$tmp[$k][0] += $data[$k]['price'];
-		$tmp[$k][1]++;
+		$tmp['products'][$k][0] += $data[$k]['price'];
+		$tmp['products'][$k][1]++;
 	}
 	$_SESSION['basket'] = array();
 	$_SESSION['total'] = 0;

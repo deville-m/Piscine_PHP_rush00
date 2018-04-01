@@ -155,6 +155,34 @@ if ($_SESSION['group'] !== "admin")
 	</div>
 
 	<div class="man-box center-box">
+		<h2>Historique des achats</h2>
+		<hr><br>
+		<?php
+		$list = file_to_data("./private/order");
+		if (!empty($list)) {
+			foreach ($list as $p) {
+				print_r($p);
+				$tot = 0;
+				echo "<div class=\"textbox\">";
+				echo "<b>".$p['user']."</b>";
+				echo "<ul>";
+				foreach ($p['products'] as $x => $pp) {
+					$tot += $pp[0];
+					echo "<li>".$x." x".$pp[1]."for ".$pp[0]."€</li>";
+				}
+				echo "</ul>"
+				echo "<p>Total: ".$tot."</p>"
+				echo "</div>";
+				echo "<hr>";
+			}
+		} else {
+			echo "<p style=\"text-align: center;\">Pas encore de commandes.</p>";
+		}
+		echo '<br><hr>';
+		?>
+	</div>
+	
+	<div class="man-box center-box">
 		<h2>Gestion Utilisateurs</h2>
 		<form action="api/user_manage.php" method="post" id="manage">
 			Supprimer compte: <select name="liste" form="manage" required>
