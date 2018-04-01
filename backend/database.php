@@ -1,6 +1,6 @@
 <?php
 
-include(__DIR__ . "/general.php");
+include_once(__DIR__ . "/general.php");
 
 function add_product($name, $price, $quantity, $image, $visible)
 {
@@ -41,7 +41,9 @@ function add_product_to_category($category_name, $product_name) {
         return FALSE;
     if (($data = file_to_data(__DIR__ . CATEGORY)) === FALSE || !isset($data[$category_name]))
         return FALSE;
-    array_push($data[$category_name], $product_name);
+    if (!isset($data[$category_name]['product']))
+        $data[$category_name]['product'] = array();
+    array_push($data[$category_name]['product'], $product_name);
     if (data_to_file($data, __DIR__ . CATEGORY) === FALSE)
         return FALSE;
     return TRUE;

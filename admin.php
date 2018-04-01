@@ -1,6 +1,6 @@
 <?php
 
-include (__DIR__ . "/backend/general.php");
+include_once(__DIR__ . "/backend/general.php");
 
 @session_start();
 if ($_SESSION['group'] !== "admin")
@@ -82,7 +82,7 @@ if ($_SESSION['group'] !== "admin")
 	
 	<div class="rm-box form">
 	  <h2>Supprimer produit</h2>
-	  <form action="api/remove_category.php" method="post" id="rm">
+	  <form action="api/remove_product.php" method="post" id="rm">
 	  	Produit: <select name="category" form="rm">
 	    	<?php
 				$list = get_data_key_list(__DIR__ . "/private/product");
