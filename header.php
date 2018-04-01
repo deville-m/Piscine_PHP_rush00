@@ -2,7 +2,7 @@
 <html>
 <body>
   <header>
-	<div class="navbar">
+	<div class="navbar" style="z-index: 500;">
 	  <a class="active" href="#">Cow Shop</a>
 	  <a href="index.php">Boutique</a>
       <?php

@@ -17,31 +17,9 @@ if ($_SESSION['group'] !== "admin")
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
 	<body>
-		<header>
-			<div class="navbar" style="z-index: 500;">
-				<a class="active" href="index.php">Cow Shop</a>
-				<a href="index.php">Boutique</a>
-				<?php
-				if (isset($_SESSION)) {
-					switch ($_SESSION['group']) {
-						case "admin":
-							echo '<a style="float:right" href="admin.php">'.$_SESSION['logged_on_user'].'</a>';
-							echo '<a style="float:right" href="api/logout.php">'.'logout'.'</a>';
-							break;
-						case "client":
-							echo '<a style="float:right" href="panier.php">panier ('."12".'€)</a>';
-							echo '<a style="float:right" href="index.php">'.$_SESSION['logged_on_user'].'</a>';
-							echo '<a style="float:right" href="api/logout.php">'.'logout'.'</a>';
-							break;
-						case "":
-							echo '<a style="float:right" href="panier.php">panier ('."0".'€)</a>';
-							echo '<a style="float:right" href="login.php">'.'log in'.'</a>';
-							echo '<a style="float:right" href="register.php">'.'sign up'.'</a>';
-					}
-				}
-				?>
-			</div>
-		</header>
+		<div class="header">
+			<?php include("./header.php"); ?>
+		</div>		
 		<span/>
 		<div style="padding-top: 60px;">
 
