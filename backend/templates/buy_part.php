@@ -1,7 +1,7 @@
 <?PHP
 function echo_buy()
 {
-	echo "<form action=\"add_to_basket.php\" method=\"POST\">\n";
+	echo "<form action=\"api/add_to_basket.php\" method=\"POST\">\n";
 
 	echo "<ul class=\"ul_line\">\n";
 

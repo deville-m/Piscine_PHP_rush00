@@ -6,14 +6,14 @@ function add_product($name, $price, $quantity, $image, $visible, $overwrite)
 {
 	foreach (func_get_args() as $k)
 	{
-		if (!$k || $k === "")
+		if ($k === "")
 			return false;
     }
     if (($products = file_to_data(__DIR__ . PRODUCT)) === FALSE)
 		return false;
-    if (!$overwrite && $products[$product_id] != NULL) {
+
+    if (!$overwrite && $products[$name] !== NULL)
         return false;
-	}
 
     $products[$name] = array();
     $products[$name]['price'] = $price;
