@@ -21,7 +21,8 @@
       <h1>Select a Classy Cow Class (CCC)</h1>
       <div class="clean-iframe">
         <?php
-          include ("./backend/templates/display_categories.php");
+          $type = "category";
+          include ("./backend/templates/display_tiles.php");
         ?>
       </div>
     </div>
