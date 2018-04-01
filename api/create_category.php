@@ -10,7 +10,7 @@ include '../backend/database.php';
  */
 if ($_SESSION['group'] != "admin") {
     header("HTTP/1.1 401 Unauthorized");
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 } else {
     if ($_POST["name"]) {
@@ -19,7 +19,7 @@ if ($_SESSION['group'] != "admin") {
         } else {
             add_category($_POST["name"], false);
         }
-        header("Location: admin.php");
+        header("Location: ../admin.php");
         exit;
     }
     header("HTTP/1.1 405 Method Not Allowed");
