@@ -22,22 +22,55 @@ if ($_SESSION['group'] !== "admin")
 		<?php include("./header.php"); ?>
 	</div>
 	<div class="cat-box center-box">
-		<h2>Création catégorie</h2>
+		<h2>Category creation</h2>
+		<p class="p_admin">A whole new category? Today is a great day!</p>
 		<form action="api/create_category.php" method="post">
-			Catégorie: <input type="text" name="name" placeholder="Ex: Useless Things"required>
-			Image: <input type="url" name="image" placeholder="Ex: https://google.com/image/..."required>
-			Visible? <input type="checkbox" name="visible" value="visibility"><br>
+			<ul class="ul_line">
+				<li>
+					<input type="text" name="name" placeholder="Name"required>
+				</li>
+				<li>
+					<input type="url" name="image" placeholder="Image URL"required>
+				</li>
+				<li>
+					<ul class="ul_line">
+						<li class="list_line check_cat">
+							Visible? <input type="checkbox" name="visible" value="visibility">
+						</li>
+					</ul>
+				</li>
+			</ul>
 			<input type="submit" name="submit" value="OK"><br>
 		</form>
 		<hr>
-		<h2>Création produit</h2>
+		<h2>Product creation</h2>
+		<p class="p_admin">Great! A new cow.</p>
 		<form action="api/create_product.php" method="post" id="mk">
-			Nom: <input type="text" name="name" placeholder="Ex: Lasso saucisson"required><br>
-			<input type="number" placeholder="Price" step="1" name="price" min="0"required><br>
-			Quantite: <input type="number" name="quantity" min="0"required>
-			Image: <input type="url" name="image" placeholder="Ex: https://google.com/image/..."required>
-			Visible? <input type="checkbox" name="visible" value="visibility"><br>
-			Mise a Jour <input type="checkbox" name="maj" value="maj"><br>
+			<ul class="ul_line">
+			<li>
+				<input type="text" name="name" placeholder="Name"required>
+			</li>
+			<li>
+				<input type="number" placeholder="Price"  name="price" step="1" min="0"required>
+			</li>
+			<li>
+				<input type="number" placeholder="Quantity" name="quantity" step="1" min="0"required>
+			</li>
+			<li>
+				<input type="url" name="image" placeholder="Image URL"required>
+			</li>
+			<li>
+				<ul class="ul_line">
+					<li class="list_line check_cat">
+						Visible? <input type="checkbox" name="visible" value="visibility">
+					</li>
+					<li class="list_line check_cat">
+						Mise a Jour: <input type="checkbox" name="maj" value="maj">
+					</li>
+				</ul>
+			</li>
+			</ul>
+
 			<div class="">
 				<h3>Categories</h3>
 				<ul class="ul_line">
@@ -49,7 +82,7 @@ if ($_SESSION['group'] !== "admin")
 				?>
 			</ul>
 			</div>
-			<input type="submit" name="submit" value="OK">
+			<input class="over-pointer" type="submit" name="submit" value="OK">
 		</form>
 	</div>
 

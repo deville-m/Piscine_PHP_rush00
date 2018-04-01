@@ -80,6 +80,10 @@ a.active {
 	margin-top: 3em;
 }
 
+.over-pointer {
+	cursor: pointer;
+}
+
 /* --- Admin --- */
 .check_cat {
 	margin-right: 1em;
@@ -127,6 +131,7 @@ a.active {
 	transition: all 0.3 ease;
 	cursor: pointer;
 }
+
 .center-box button:hover,.form button:active,.form button:focus {
 	background: #43A047;
 }
