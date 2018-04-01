@@ -12,25 +12,40 @@
      ?>
   </div>
   <div class="main-right-menu">
-    <h2>Here we are</h2>
-    <iframe class="clean-iframe" src="./backend/templates/list_of_products.php" width="100%" height="100%"></iframe>
-    <iframe class="clean-iframe" src="./backend/templates/list_of_categories.php" width="100%" height="100%"></iframe>
+    <h2>So many Coooooow Categories!</h2>
+    <ul class="menu-ul">
+      <?php
+        $type = "category";
+        include ("./backend/templates/list_of_categories.php");
+      ?>
+    </ul>
+    <h2>Each Cow is a unique gem!</h2>
+    <ul class="menu-ul">
+      <?php
+        $type = "product";
+        include ("./backend/templates/list_of_categories.php");
+      ?>
+    </ul>
   </div>
   <div class="main-container">
-    <div class="main-items">
       <h1>Select a Classy Cow Class (CCC)</h1>
-      <div class="clean-iframe">
+      <ul class="tile-mosaic">
         <?php
           $type = "category";
           include ("./backend/templates/display_tiles.php");
         ?>
-      </div>
-    </div>
+      </ul>
+      <h1>Mmmmmm look at those Cow</h1>
+      <ul class="tile-mosaic">
+        <?php
+          $type = "product";
+          include ("./backend/templates/display_tiles.php");
+        ?>
+      </ul>
   </div>
 
   <div class="footer">
-    <h6>Source: <a href="https://www.ptable.com/">https://www.ptable.com/</a></h6>
-    <h6>&copy rbaraud 2018</h6>
+    <h6>&copy CowShop 2018</h6>
   </div>
 </body>
 </html>

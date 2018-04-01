@@ -11,27 +11,42 @@ body {
   height: 100px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 {
+  margin-bottom: 1em;
+}
+
+h2 {
+  margin-bottom: 1em;
+}
+
 .main-container {
   background-color: #ecf0f1;
-  padding-bottom: 3em;
   overflow: auto;
+  margin-left: 1em;
   margin-bottom: 3em;
+  padding: 1em;
 }
 
 .main-items {
   padding: 1rem;
-  max-width: 70%;
   background-color: #ecf0f1;
 }
 
 .main-right-menu {
   float: right;
-  margin: 2%;
+  margin: 0 1em 1em 1em;
   width: 25%;
   background-color: #bdc3c7;
+  padding: 1em;
 }
 
 .footer {
+  text-align: left;
   padding: 1em;
   background: #76b852; /* fallback for old browsers */
   background: -webkit-linear-gradient(right, #76b852, #8DC26F);
@@ -50,23 +65,54 @@ body {
 }
 /*======== Displays ========*/
 /* a. categories */
-.display_list {
+ul.tile-mosaic {
   list-style: none;
-  display: inline-block;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 4em;
 }
 
-.tiles {
-  width: 200px;
+li.tiles {
+  max-width: 200px;
   height: 200px;
   display: inline-block;
+  vertical-align: top;
   padding: 2em;
   margin: 0.5em;
   background-color: #bdc3c7;
 }
 
 .tiles img {
-  width: 100%;
+  max-width: 200px;
   height: auto;
+}
+
+.tiles:hover {
+  background-color: #27ae60;
+}
+
+/*======== Right menu list ========*/
+.menu-ul {
+  list-style: none;
+  margin: 0 1em 2em 1em;
+  text-align: center;
+}
+
+.category {
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  background-color: #2ecc71;
+}
+
+.product {
+
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  background-color: #f1c40f;
+}
+
+.category:hover, .product:hover {
+  background-color: #7f8c8d;
 }
 
 /*======== Listings ========*/
@@ -81,17 +127,8 @@ body {
   display: inline-block;
 }
 
-/* CELLS */
-h3 {
-  font-size: 1.4em;
-  padding: 0.5em;
-  margin: 0;
-}
+/*========== Category Cow id ==========*/
 
-p {
-  font-size: 0.8em;
-  margin: 0.02em;
-}
 
 @media (max-width: 1050px)
 {
