@@ -41,8 +41,8 @@ function add_product_to_category($category_name, $product_name) {
         return FALSE;
     if (($data = file_to_data(__DIR__ . CATEGORY)) === FALSE || !isset($data[$category_name]))
         return FALSE;
-    if (!isset($data[$category_name]['product']))
-        $data[$category_name]['product'] = array();
+    if (!isset($data[$category_name]))
+        return FALSE;
     array_push($data[$category_name]['product'], $product_name);
     if (data_to_file($data, __DIR__ . CATEGORY) === FALSE)
         return FALSE;
@@ -59,6 +59,7 @@ function add_category($name, $image, $visible) {
     $data[$name] = array();
     $data[$name]['image'] = $image;
     $data[$name]['visible'] = $visible;
+    $data[$name]['product'] = array();
     if (data_to_file($data, __DIR__ . CATEGORY) === FALSE)
         return FALSE;
     return TRUE;
