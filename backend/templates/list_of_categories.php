@@ -6,7 +6,7 @@
  */
 
 include_once __DIR__."/../general.php";
-include_once __DIR__."/../find_category.php";
+include_once __DIR__."/is_visible.php";
 
 if ($type === "category")
 {
@@ -34,11 +34,9 @@ else if ($type === 'product')
 	}
 	if (($list = file_to_data(__DIR__."/../../private/product")) === false)
 		return false;
-	print_r($list_cat)."\n";
 	foreach ($list as $key => $item)
 	{
-		echo find_category($key)."\n";
-		if (find_category($key))
+		if (is_visible($key))
 		{
 			if (!$id && $item['quantity'] && $item['visible'] )
 			{
@@ -56,4 +54,5 @@ else if ($type === 'product')
 			}
 		}
 	}
+}
 ?>
