@@ -6,12 +6,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+		<link rel="stylesheet" href="./css/main.css">
 	</head>
 	<body>
 		<header>
 			<div class="navbar">
 				<a class="active" href="index.php">Cow Shop</a>
-				<a href="index.php">Boutique</a>
 			</div>
 		</header>
 		<div class="login-page">

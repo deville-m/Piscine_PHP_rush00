@@ -3,10 +3,31 @@
  * @author ctrouill
  */
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+/*@import url(https://fonts.googleapis.com/css?family=Roboto:300);*/
 
 body {
 	background-color: #F5F5F5;
+}
+
+/*  Logo */
+.ul_line {
+	list-style: none;
+}
+
+.list_line {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#logo {
+	margin: 6px;
+	padding: 0;
+	height: 40px;
+}
+
+#basket {
+	margin: 0;
+	padding: 0;
 }
 
 /* --------- */
@@ -17,21 +38,25 @@ body {
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+		box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
-.active {
-    background-color: #4CAF50;
+a.active {
+  background-color: #4CAF50;
+	padding: 0px 10px 1px 0;
 }
 
 .navbar a {
 	font-family: "Roboto", sans-serif;
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-	padding: 18px 18px;
-    text-decoration: none;
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+}
+
+.navbar a.btn {
+	padding: 20px 18px;
 }
 
 .navbar a:hover {

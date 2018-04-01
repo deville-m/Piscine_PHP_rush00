@@ -15,6 +15,7 @@ if ($_SESSION['group'] !== "admin")
 		<meta name="description" content="CowShop">
 		<meta name="author" content="42">
 		<link rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
 		<header>
@@ -108,7 +109,7 @@ if ($_SESSION['group'] !== "admin")
 					<input type="submit" name="submit" value="OK"><br>
 				</form>
 			</div>
-			
+
 			<div class="rm-box form">
 				<h2>Supprimer produit</h2>
 				<form action="api/remove_product.php" method="post" id="rm">

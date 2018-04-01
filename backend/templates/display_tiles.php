@@ -11,17 +11,11 @@ include_once __DIR__."/../general.php";
 	{
 		if (($list = file_to_data(__DIR__."/../../private/category")) === false)
 			return false;
-	}
-	else if ($type === "product")
-	{
-		if (($list = file_to_data(__DIR__."/../../private/product")) === false)
-			return false;
-	}
-	if ($list)
-	{
 		foreach ($list as $key => $item)
 		{
-			echo "<a href=\"#\"><li class=\"tiles\">".
+			echo "<a href=\"/index.php?type=".$type."&id=".$key."\"><li class=\"tiles\"
+				id=\"".$type."_".$key."\"
+				>".
 				"<img src=\"".
 				$item["image"].
 				"\" /><br>".
@@ -29,5 +23,45 @@ include_once __DIR__."/../general.php";
 				$key.
 				"</p></li></a>";
 		}
+
 	}
+	else if ($type === "product")
+	{
+		if ($id)
+		{
+			if (($cat_prod = file_to_data(__DIR__."/../../private/category")) === false)
+				return false;
+			$cat_prod = $cat_prod[$id];
+			$cat_prod = $cat_prod['product'];
+		}
+		if (($list = file_to_data(__DIR__."/../../private/product")) === false)
+			return false;
+		foreach ($list as $key => $item)
+		{
+			if (!$id)
+			{
+				echo "<li class=\"tiles\"
+				id=\"".$type."_".$key."\"
+				>".
+				"<img src=\"".
+				$item["image"].
+				"\" /><br>".
+				"<p>".
+				$key.
+				"</p></li></a>";
+			}
+			else if (in_array($key, $cat_prod))
+			{
+				echo "<li class=\"tiles\"
+				id=\"".$type."_".$key."\"
+				>".
+				"<img src=\"".
+				$item["image"].
+				"\" /><br>".
+				"<p>".
+				$key.
+				"</p></li>";
+			}
+		}
+ 	}
 ?>
