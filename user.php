@@ -20,27 +20,19 @@ if ($_SESSION['group'] === "admin") {
 			<?php include("./header.php"); ?>
 		</div>
 		<div class="man-box center-box">
-			<?php
-			$product = file_to_data(__DIR__ . "/private/pass");
-			echo '<h2> Editer informations </h2>';
-			echo '<hr><br>';
-			if (!empty($_SESSION['basket'])) {
-				foreach ($_SESSION['basket'] as $p) {
-					if (!isset($product[$p])) continue;
-					echo "<div class=\"textbox\">";
-					echo "<div class=\"left\">Product: <strong>".$p."</strong></div>";
-					echo "<div class=\"right\">Price: <i>".$product[$p]['price']."</i> €</div><br>";
-					echo "</div><br>";
-				}
-			} else {
-				echo '<p>The cart is empty</p>';
-			}
-			echo '<br><hr>';
-			echo 'Total: '.$_SESSION['total'].'€';
-			?>
-			<br>
-			<form action="api/place_order.php" method="post" id="buy">
-				<input type="submit" name="submit" value="acheter">
+			<h1>Editer les informations</h1>
+			<form action="api/update_infos.php" method="post" id="buy">
+				<?php echo "<h3>Account: ".$_SESSION['logged_on_user']."</h3>"?>
+				<ul class="ul_line">
+					<li class="list_line">
+						<input type="text" name="new_pseudo" placeholder="Nouveau pseudo"required>
+					</li>
+					<li class="list_line">
+						<input type="password" name="new_password" placeholder="Nouveau mot de passe"required>
+					</li>
+				</ul>
+				<br>
+				<input type="submit" name="submit" value="update informations">
 			</form>
 		</div>
 	</body>
