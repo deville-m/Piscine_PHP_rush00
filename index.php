@@ -1,44 +1,56 @@
 <?php @session_start(); ?>
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>CowShop</title>
-  <meta name="description" content="The official cow shopd">
+  <meta name="description" content="The official Cow shop">
   <meta name="author" content="42">
+  <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="css/styles.css">
   <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 </head>
-
 <body>
-  <header>
-	<div class="navbar">
-	  <a class="active" href="#">Cow Shop</a>
-	  <a href="index.php">Boutique</a>
+  <div class="header">
+    <?php
+      include("./header.php");
+     ?>
+  </div>
+  <div class="main-right-menu">
+    <h2>So many Coooooow Categories!</h2>
+    <ul class="menu-ul">
       <?php
-      if (isset($_SESSION)) {
-          switch ($_SESSION['group']) {
-          case "admin":
-              echo '<a style="float:right" href="admin.php">'.$_SESSION['logged_on_user'].'</a>';
-              echo '<a style="float:right" href="api/logout.php">'.'logout'.'</a>';
-              break;
-          case "client":
-              echo '<a style="float:right" href="panier.php">panier ('."12".'€)</a>';
-              echo '<a style="float:right" href="index.php">'.$_SESSION['logged_on_user'].'</a>';
-              echo '<a style="float:right" href="api/logout.php">'.'logout'.'</a>';
-              break;
-          case "":
-              echo '<a style="float:right" href="panier.php">panier ('."0".'€)</a>';
-              echo '<a style="float:right" href="login.php">'.'log in'.'</a>';
-              echo '<a style="float:right" href="register.php">'.'sign up'.'</a>';
-          }
-      }
+        $type = "category";
+        include ("./backend/templates/list_of_categories.php");
       ?>
-	</div>
-  </header>
-  <!-- Content go here -->
-</div>
-  <script src="js/script.js"></script>
+    </ul>
+    <h2>Each Cow is a unique gem!</h2>
+    <ul class="menu-ul">
+      <?php
+        $type = "product";
+        include ("./backend/templates/list_of_categories.php");
+      ?>
+    </ul>
+  </div>
+  <div class="main-container">
+      <h1>Select a Classy Cow Class (CCC)</h1>
+      <ul class="tile-mosaic">
+        <?php
+          $type = "category";
+          include ("./backend/templates/display_tiles.php");
+        ?>
+      </ul>
+      <h1>Mmmmmm look at those Cow</h1>
+      <ul class="tile-mosaic">
+        <?php
+          $type = "product";
+          include ("./backend/templates/display_tiles.php");
+        ?>
+      </ul>
+  </div>
+
+  <div class="footer">
+    <h6>&copy CowShop 2018</h6>
+  </div>
 </body>
 </html>
