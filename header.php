@@ -1,16 +1,5 @@
 <?php @session_start(); ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>CowShop</title>
-  <meta name="description" content="The official cow shopd">
-  <meta name="author" content="42">
-  <link rel="stylesheet" href="css/styles.css">
-  <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-</head>
-
+<html>
 <body>
   <header>
 	<div class="navbar">
@@ -39,5 +28,4 @@
   </header>
 </div>
   <script src="js/script.js"></script>
-</body>
-</html>
+</body></html>
