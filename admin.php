@@ -1,4 +1,12 @@
-<?php session_start();?>
+<?php
+
+include (__DIR__ . "/backend/general.php");
+
+@session_start();
+if ($_SESSION['group'] !== "admin")
+	header("Location: ../index.php");
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -36,14 +44,18 @@
          </header>
     <span/>
 	<div style="padding-top: 60px;">
+
+	
 	<div class="cat-box form">
 	  <h2>Création catégorie</h2>
 	  <form action="api/create_category.php" method="post">
 		Catégorie: <input type="text" name="name" placeholder="Ex: Useless Things">
          Visible? <input type="checkbox" name="visible" value="visibility"><br>
-		<input type="submit"><br>
+		<input type="submit" value="OK"><br>
 	  </form>
 	</div>
+
+
 	<div class="mk-box form">
 	  <h2>Création produit</h2>
 	  <form action="api/create_product.php" method="post" id="mk">
@@ -51,70 +63,78 @@
 		Prix: <input type="number" name="price" min="0"><br>
         Quantite: <input type="number" name="quantity" min="0">
 		Visible? <input type="checkbox" name="visible" value="visibility"><br>
-	    <?php
-        echo 'Categorie:';
-        echo '<br> <select name="liste" form="mk" multiple>';
-		$list = explode(" ", "Liste d'elements dans la categorie a afficher apres requette csv");
-		foreach ($list as $e) {
-		    echo "<li>".$e."</li>";
-			echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-		}
-        echo '</select>';
-		?>
-		<input type="submit"><br>
+		Catégorie: <br>
+			<select name="liste" form="mk" multiple>
+	    	<?php
+	    		$list = get_data_key_list(__DIR__ . "/private/product");
+				foreach ($list as $e) {
+		    		echo "<li>".$e."</li>";
+					echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+				}
+			?>
+			</select>
+		<input type="submit" value="OK"><br>
 	  </form>
 	</div>
+	
+	
 	<div class="rm-box form">
 	  <h2>Supprimer produit</h2>
 	  <form action="api/remove_category.php" method="post" id="rm">
-	    <?php
-        echo 'Produit: <select name="category" form="rm">';
-		$list = explode(" ", "ceci est une liste de produits a supprimer");
-		foreach ($list as $e) {
-		    echo "<li>".$e."</li>";
-			echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-		}
-        echo '</select>';
-		?>
-		<input type="submit">
+	  	Produit: <select name="category" form="rm">
+	    	<?php
+				$list = get_data_key_list(__DIR__ . "/private/product");
+				foreach ($list as $e) {
+		    		echo "<li>".$e."</li>";
+					echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+				}
+			?>
+			</select>
+		<input type="submit" value="OK">
 	  </form>
 	</div>
+	
+
 	<div class="viz-box form">
 	  <h2>Rendre Visible</h2>
 	  <form action="api/make_visible.php" method="post" id="viz">
+	  	Produit: <select name="liste" form="viz">
         <?php
-        echo 'Produit: <select name="liste" form="viz">';
-		$list = explode(" ", "ceci est une liste");
-		foreach ($list as $e) {
-		    echo "<li>".$e."</li>";
-			echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-		}
-        echo '</select><br>';
-        echo 'Categorie: <select name="liste2" form="viz">';
-		$list = explode(" ", "ceci est une liste");
-        foreach ($list as $e) {
-            echo "<li>".$e."</li>";
-			echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-        }
-        echo '</select><br>';
+			$list = get_data_key_list(__DIR__ . "/private/product");
+			foreach ($list as $e) {
+			    echo "<li>".$e."</li>";
+				echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+			}
+	        echo '</select><br>';
+	        echo 'Categorie: <select name="liste2" form="viz">';
+			$list = get_data_key_list(__DIR__ . "/private/category");
+	        foreach ($list as $e) {
+	            echo "<li>".$e."</li>";
+				echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+	        }
 		?>
-	  <input type="submit">
+		</select><br>
+	  <input type="submit" value="OK">
 	  </form>
 	</div>
+	
+
 	<div class="man-box form">
       <h2>Gestion Utilisateurs</h2>
 	  <form action="api/user_manage.php" method="post" id="manage">
+	  	Supprimer compte: <select name="liste" form="manage">
 		<?php
-        echo 'Supprimer compte: <select name="liste" form="manage">';
-		$list = explode(" ", "ceci est une liste");
-		foreach ($list as $e) {
-		    echo "<li>".$e."</li>";
-			echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-		}
-        echo '</select>';
+			$list = get_data_key_list(__DIR__ . "/private/passwd");
+			foreach ($list as $e) {
+			    echo "<li>".$e."</li>";
+				echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+			}
 		?>
-	  <input type="submit">
+		</select>
+	  <input type="submit" value="OK">
 	  </form>
 	</div>
+  
+
   </body>
 </html>

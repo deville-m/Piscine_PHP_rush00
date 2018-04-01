@@ -23,7 +23,7 @@
 			$_SESSION['error'] = "";
 		?>
 		<form class="login-form" method="post" action="api/login.php">
-			<input type="text" playceholder="username" name="username" id="username" required/>
+			<input type="text" placeholder="username" name="username" id="username" required/>
 			<input type="password" placeholder="password" name="password" id="password" required/>
 			<button>login</button>
 			<p class="message">Pas enregistré? <a href="register.php">Creer un compte</a></p>
