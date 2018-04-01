@@ -21,7 +21,7 @@ if ($_SESSION['group'] === "admin") {
 		</div>
 		<div class="man-box center-box">
 			<h1>Editer les informations</h1>
-			<form action="api/update_infos.php" method="post" id="buy">
+			<form action="api/update_infos.php" method="post" id="update">
 				<?php echo "<h3>Account: ".$_SESSION['logged_on_user']."</h3>"?>
 				<ul class="ul_line">
 					<li class="list_line">
