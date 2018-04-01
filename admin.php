@@ -31,9 +31,7 @@ if ($_SESSION['group'] !== "admin")
 					Visible? <input type="checkbox" name="visible" value="visibility"><br>
 					<input type="submit" name="submit" value="OK"><br>
 				</form>
-			</div>
-
-			<div class="mk-box form">
+				<hr>
 				<h2>Création produit</h2>
 				<form action="api/create_product.php" method="post" id="mk">
 					Nom: <input type="text" name="name" placeholder="Ex: Lasso saucisson"required><br>
@@ -101,9 +99,7 @@ if ($_SESSION['group'] !== "admin")
 					</select>
 					<input type="submit" name="submit" value="OK">
 				</form>
-			</div>
-
-			<div class="rm-box form">
+				<hr>
 				<h2>Supprimer catégorie</h2>
 				<form action="api/remove_category.php" method="post" id="rms">
 					Catégorie: <select name="category" form="rms" required>
@@ -117,9 +113,7 @@ if ($_SESSION['group'] !== "admin")
 					</select>
 					<input type="submit" name="submit" value="OK">
 				</form>
-			</div>
-
-			<div class="viz-box form">
+				<hr>
 				<h2>Rendre Visible</h2>
 				<form action="api/make_visible.php" method="post" id="viz">
 					Produit: <select name="liste" form="viz" required>
@@ -141,7 +135,7 @@ if ($_SESSION['group'] !== "admin")
 					<input type="submit" name="submit" value="OK">
 				</form>
 			</div>
-
+			
 			<div class="man-box form">
 				<h2>Gestion Utilisateurs</h2>
 				<form action="api/user_manage.php" method="post" id="manage">
