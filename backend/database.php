@@ -66,7 +66,7 @@ function add_category($name, $image, $visible) {
 function remove_category($name) {
     if (!$name)
         return FALSE;
-    if (($products = file_to_data(__DIR__ . CATEGORY)) === FALSE)
+    if (($data = file_to_data(__DIR__ . CATEGORY)) === FALSE)
         return FALSE;
     unset($data[$name]);
     if (data_to_file($data, __DIR__ . CATEGORY) === FALSE)
