@@ -158,6 +158,7 @@ if ($_SESSION['group'] !== "admin")
 					<?php
 					$list = get_data_key_list(__DIR__ . "/private/passwd");
 					foreach ($list as $e) {
+						if ($e == "root") continue;
 						echo "<li>".$e."</li>";
 						echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
 					}

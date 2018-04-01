@@ -17,7 +17,6 @@ if ($_SESSION['group'] != "admin") {
         && $_POST["price"]
         && $_POST["quantity"]
         && $_POST["image"]) {
-        // && $_POST["list"]) {
         if (isset($_POST['visibility'])) {
             add_product($_POST["name"], $_POST["price"], $_POST["quantity"], $_POST["image"], true);
         } else {
