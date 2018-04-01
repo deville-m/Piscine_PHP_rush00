@@ -26,8 +26,8 @@ if ($_SESSION['group'] == "admin") {
 			echo '<h2> Panier </h2>';
 			echo '<hr><br>';
 			$tot = 0;
-			if (!empty($list)) {
-				foreach ($list as $p) {
+			if (!empty($_SESSION['basket'])) {
+				foreach ($_SESSION['basket'] as $p) {
 					if (!isset($product[$p])) continue;
 					$tot += $product[$p]['price'];
 					echo "<div class=\"textbox\">";
@@ -41,6 +41,10 @@ if ($_SESSION['group'] == "admin") {
 			echo '<br><hr>';
 			echo 'Total: '.$tot.'€';
 			?>
+			<br>
+			<form action="api/place_order.php" method="post" id="buy">
+				<input type="submit" name="submit" value="acheter">
+			</form>
 		</div>
 	</body>
 </html>
