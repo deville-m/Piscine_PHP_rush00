@@ -12,6 +12,7 @@ if ($_SESSION['basket'] && ($data = file_to_data(__DIR__ . PRODUCT)) !== FALSE) 
 		array_push($tmp, $k);
 	}
 	$_SESSION['basket'] = array();
+	$_SESSION['total'] = 0;
 	if (empty($tmp) || !($orders = file_to_data("../private/order"))) {
 		exit ;
 	}
