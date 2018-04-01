@@ -161,6 +161,7 @@ a.active {
 .container .info span .fa {
 	color: #EF3B3A;
 }
+
 body {
 	background: #76b852; /* fallback for old browsers */
 	background: -webkit-linear-gradient(right, #76b852, #8DC26F);
@@ -170,4 +171,21 @@ body {
 	font-family: "Roboto", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+.right {
+    float: right;
+}
+
+.left{
+    float: left;
+}
+
+.man-box {
+	margin-top: 140px;
+}
+
+.textbox {
+	margin-right: 30px;
+	margin-left: 30px;
 }
