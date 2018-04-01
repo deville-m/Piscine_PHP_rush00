@@ -7,23 +7,24 @@
 </head>
 <body>
   <div class="header">
-      <h1>I will come</h1>
+    <?php
+      include("./header.php");
+     ?>
   </div>
   <div class="main-right-menu">
     <h2>Here we are</h2>
     <iframe class="clean-iframe" src="./backend/templates/list_of_products.php" width="100%" height="100%"></iframe>
     <iframe class="clean-iframe" src="./backend/templates/list_of_categories.php" width="100%" height="100%"></iframe>
   </div>
-  <div class="container">
+  <div class="main-container">
     <div class="main-items">
       <h1>Select a Classy Cow Class (CCC)</h1>
       <div class="clean-iframe">
         <?php
-          include "./backend/templates/display_categories.php";
+          include ("./backend/templates/display_categories.php");
         ?>
       </div>
     </div>
-
   </div>
 
   <div class="footer">
