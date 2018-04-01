@@ -1,5 +1,5 @@
 <?PHP
-	include __DIR__.'/database.php';
+	include_once __DIR__.'/database.php';
 
 	add_product("toto11", 1000, 1, "https://cdn.modernfarmer.com/wp-content/uploads/2015/08/cowburp.jpeg", true);
 	add_product("toto12", 1000, 1, "http://s.newsweek.com/sites/www.newsweek.com/files/styles/full/public/2017/06/13/cow.jpg", true);

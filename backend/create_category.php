@@ -1,5 +1,5 @@
 <?PHP
-	include __DIR__.'/database.php';
+	include_once __DIR__.'/database.php';
 
 	add_category("Normandes", "https://metrouk2.files.wordpress.com/2016/10/gettyimages-93160178.jpg?quality=80&strip=all&strip=all", true);
 
